@@ -1,0 +1,102 @@
+---
+title: "Partisan vs Climate Cues and Public Opinion about Trump's Actions on Energy"
+bibliography: references.bib
+csl: american-political-science-association.csl
+fig-cap-location: top
+fontfamily: ebgaramond
+link-bibliography: false
+format:
+  html:
+    author:
+      - name: Matthew C. Nowlin
+        email: matthew.nowlin@uta.edu
+        corresponding: true
+        affiliations:
+          - name: University of Texas at Arlington
+            department: Department of Political Science
+  pdf:
+    author:
+      - name: "Matthew C. Nowlin^[Associate Professor, Department of Political Science, University of Texas at Arlington. Email: matthew.nowlin@uta.edu]"
+    include-in-header:
+      text: |
+        \usepackage{setspace}
+        \usepackage{dcolumn}
+        \usepackage{float}
+        \usepackage{amsmath}
+        \addtokomafont{disposition}{\rmfamily}
+        \normalem
+  docx:
+    author:
+      - name: "Matthew C. Nowlin^[Associate Professor, Department of Political Science, University of Texas at Arlington. Email: matthew.nowlin@uta.edu]"
+    reference-doc: custom-reference-doc.docx
+---
+
+```{r}
+#| include: false
+source("scripts/manuscript-prep.R")
+```
+
+# Introduction 
+
+For this project, I will use a survey experiment to examine the polarization in support for several recent administration actions on energy when respondents are given a Trump cue, a climate change cue, and no cues. Specifically, I will survey 3,000 respondents recruited from Cloud Research, with 1,000 participants receiving a Trump cue, 1,000 receiving a climate cue, and 1,000 in the control condition receiving no cue. Respondents in each condition will be asked about their level of support for several actions, including limiting tax credits for wind and solar projects, requiring coal plants to remain open, opening federal lands for coal leasing, cancelling a nearly complete offshore wind project, and shortening the timeline of regulatory approval for new nuclear plants.
+
+I have several preregistered hypotheses regarding how respondents will respond to the Trump and climate cues based on political beliefs and education compared to those in the control group. 
+
+> H1: Conservative Republicans who receive the Trump or climate change cue will be more supportive of Trump's actions on energy than others 
+
+> H2: Liberal Democrats who receive the Trump or climate change cue will be less supportive of Trump's actions on energy than others 
+
+> H3: Conservative Republicans without a college degree who receive the Trump cue will be more supportive of Trump's actions on energy than others
+
+> H4: Liberal Democrats without a college degree who receive the Trump cue will be less supportive of Trump's actions on energy than others 
+
+
+# Data and Measures 
+
+Data is from a public opinion survey and weighted to match the population on key demographics and partisanship
+
+Conservative Republican = conRep
+Liberal Democrats = libDem 
+college = 1 if college degree; 0 if not 
+
+I also control for demographics including age, male, white, and income
+
+# Results
+
+```{r}
+#| label: tbl-results
+#| tbl-cap: "Weighted OLS Models of Support for Trump's Energy Actions"
+results_table
+```
+
+```{r}
+#| label: fig-identity
+#| fig-cap: "Predicted Support by Cue Condition and Political Identity"
+#| fig-width: 11
+#| fig-height: 4
+fig_identity
+```
+
+```{r}
+#| label: fig-college
+#| fig-cap: "Predicted Support by Trump Cue and College Degree, Conservative Republicans and Liberal Democrats"
+#| fig-width: 11
+#| fig-height: 6
+fig_college
+```
+
+- **H1** (conRep more supportive under either cue): partially supported. The Trump cue significantly increased conservative Republicans' support for coal leasing (*b* = 0.45, *p* = .028) and nuclear licensing (*b* = 0.49, *p* = .030), marginally increased support for keeping coal plants open (*b* = 0.33, *p* = .091), and was positive but not significant for the other two actions. The climate cue did not increase conRep support for any action, and significantly *reduced* it for renewable tax credits (*b* = -0.45, *p* = .008).
+- **H2** (libDem less supportive under either cue): not supported at conventional significance. Both cues moved libDem support in the hypothesized negative direction for four of five actions, but no coefficient reached *p* < .05; the climate cue's effect on tax-credit support was marginal (*b* = -0.25, *p* = .066).
+- **H3** (Trump-cue effect on conRep concentrated among non-college respondents): not supported. The trump.cue x conRep x college term was negative in all five models (consistent with the effect being stronger among non-college conRep), but never reached significance.
+- **H4** (Trump-cue effect on libDem concentrated among non-college respondents): not supported. The trump.cue x libDem x college term was small, inconsistent in sign across models, and not significant in any.
+
+Overall, the clearest evidence is for H1: the Trump cue, but not the climate cue, increased conservative Republican support for two to three of the five actions (coal leasing and nuclear licensing significantly; keeping coal plants open marginally). There is no reliable evidence that either cue suppressed liberal Democrats' support (H2), or that education moderated the Trump cue's effect on either group (H3, H4). Dropping the Trump-approval control leaves these conclusions materially unchanged.
+
+# Discussion
+
+
+# Conclusion 
+
+\newpage
+
+# References
