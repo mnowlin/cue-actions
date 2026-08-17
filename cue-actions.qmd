@@ -42,6 +42,24 @@ For this project, I will use a survey experiment to examine the polarization in 
 
 I have several preregistered hypotheses regarding how respondents will respond to the Trump and climate cues based on political beliefs and education compared to those in the control group. 
 
+# Cues and Cue-Taking
+
+Partisan cues function as a heuristic that allows citizens to form opinions on complex policy issues without extensive information [@kamWhoToesParty2005; @schaffnerPartisanHeuristicLowInformation2002]. Rather than evaluating the substantive merits of a policy, citizens often infer their own position from the position taken by their preferred party or its elites, a process that is well documented across a wide range of issues [@slothuusPoliticalPartiesMotivated2010; @leeperPoliticalPartiesMotivated2014]. This cue-taking is best understood through the lens of motivated reasoning, wherein citizens process information in a way that protects and reinforces their prior partisan commitments rather than arriving at accuracy [@taberMotivatedSkepticismEvaluation2006; @petersenMotivatedReasoningPolitical2013]. As elite polarization has intensified, party cues have become an increasingly powerful, and at times dominant, force in opinion formation, often overwhelming the effect of substantive policy information [@druckmanHowElitePartisan2013].
+
+Climate change and energy policy are particularly susceptible to this dynamic. As shown by Feldman and Hart [-@feldmanClimateChangePolarizing2018], simply attaching a climate change frame or a cue from a Democratic source to an energy policy is often enough to depress support among Republicans, even when the underlying policy is left unchanged. Similarly, out-group cues from Democratic elites have been found to produce a durable backlash in climate skepticism among Republican identifiers [@merkleyPartyCuesNews2021], and partisan cue-taking extends to more recent and salient energy proposals, such as the Green New Deal [@mcconnellGreenNewDeal2022]. These findings suggest that Trump cues and climate cues are likely to activate similar, but oppositely signed, partisan reactions to actions on energy: conservative Republicans are likely to become more supportive when an action is cued as coming from Trump or as countering climate change, whereas liberal Democrats are likely to become less supportive under the same cues.
+
+Whether cue-taking of this kind is more pronounced among the less educated, however, is not as settled as the classic heuristics literature might suggest. Early accounts of the partisan heuristic emphasize that cue-taking substitutes for the cognitive effort required to process substantive information, implying that citizens with fewer cognitive resources, such as those without a college degree, should rely on party cues the most [@kamWhoToesParty2005]. Numeracy research supports this account: low-numeracy respondents rely more heavily on party cues, while high-numeracy respondents are more likely to update toward substantive policy information when it is available [@merolaNumeracyPersuasiveEffect2016]. Yet effortful thinking alone does not appear to be sufficient to reduce cue reliance; it is the availability of policy information, not cognitive effort per se, that weakens party cue effects [@tappinEstimatingCausalEffects2026]. Complicating the picture further, political sophistication and education are also associated with more effective motivated reasoning, meaning that better-informed citizens may process cue-congruent information more efficiently rather than less [@kahanIdeologyMotivatedReasoning2013]. Bakker, Lelkes, and Malka [-@bakkerUnderstandingPartisanCue2019] similarly find that cue receptivity is not simply a function of bounded rationality but is strongest when cognitive resources are placed in service of expressive, identity-affirming reasoning. Consistent with this more conditional pattern, education has been found to amplify, rather than dampen, partisan polarization over climate change, particularly among conservatives [@hamiltonEducationPoliticsOpinions2011]. Together, this literature suggests that a college degree is likely to shape responsiveness to Trump and climate cues, but the direction of that relationship is less straightforward than the low-information heuristic model implies.
+
+Additionally, a Trump cue may differently than a typical partisan cue because of Trump's purported strength among "working-class" voters, particularly white working class voters.  
+
+In the next section, I describe the specific actions on energy included in the survey experiment and the hypotheses derived from this literature.
+
+# Trump Actions on Energy 
+
+trump actions in his first year as president for the second time 
+
+## Hypotheses 
+
 > H1: Conservative Republicans who receive the Trump or climate change cue will be more supportive of Trump's actions on energy than others 
 
 > H2: Liberal Democrats who receive the Trump or climate change cue will be less supportive of Trump's actions on energy than others 
@@ -60,6 +78,22 @@ Liberal Democrats = libDem
 college = 1 if college degree; 0 if not 
 
 I also control for demographics including age, male, white, and income
+
+## Trump Actions 
+
+Recently, the [Trump Administration/Federal government] took several actions to shape electricity generation in the U.S.
+
+[Scientists are concerned that the actions associated with coal, wind, and solar energy will make climate change worse.]
+
+Using a scale of 1 to 7, where 1 means strongly oppose and 7 means strongly support, how do you feel about the following actions of the [Trump Administration/Federal government]?
+[randomize]
+
+•	The [Trump Administration/Federal government] limiting the eligibility of wind and solar energy projects for federal tax credits
+•	The [Trump Administration/Federal government] requiring coal plants that were set to retire to remain open
+•	The [Trump Administration/Federal government] opening 13.1 million acres of federal land for coal leasing
+•	The [Trump Administration/Federal government] cancelling an offshore wind project that was nearly complete
+•	The [Trump Administration/Federal government] shortening the time it takes to approve and license the construction of new nuclear power plants
+
 
 # Results
 

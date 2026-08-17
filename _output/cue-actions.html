@@ -24,7 +24,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="cue-actions_files/libs/clipboard/clipboard.min.js"></script>
@@ -85,6 +104,19 @@ ul.task-list li input[type="checkbox"] {
 <h1>Introduction</h1>
 <p>For this project, I will use a survey experiment to examine the polarization in support for several recent administration actions on energy when respondents are given a Trump cue, a climate change cue, and no cues. Specifically, I will survey 3,000 respondents recruited from Cloud Research, with 1,000 participants receiving a Trump cue, 1,000 receiving a climate cue, and 1,000 in the control condition receiving no cue. Respondents in each condition will be asked about their level of support for several actions, including limiting tax credits for wind and solar projects, requiring coal plants to remain open, opening federal lands for coal leasing, cancelling a nearly complete offshore wind project, and shortening the timeline of regulatory approval for new nuclear plants.</p>
 <p>I have several preregistered hypotheses regarding how respondents will respond to the Trump and climate cues based on political beliefs and education compared to those in the control group.</p>
+</section>
+<section id="cues-and-cue-taking" class="level1">
+<h1>Cues and Cue-Taking</h1>
+<p>Partisan cues function as a heuristic that allows citizens to form opinions on complex policy issues without extensive information <span class="citation" data-cites="kamWhoToesParty2005 schaffnerPartisanHeuristicLowInformation2002">(<a href="#ref-kamWhoToesParty2005" role="doc-biblioref">Kam 2005</a>; <a href="#ref-schaffnerPartisanHeuristicLowInformation2002" role="doc-biblioref">Schaffner and Streb 2002</a>)</span>. Rather than evaluating the substantive merits of a policy, citizens often infer their own position from the position taken by their preferred party or its elites, a process that is well documented across a wide range of issues <span class="citation" data-cites="slothuusPoliticalPartiesMotivated2010 leeperPoliticalPartiesMotivated2014">(<a href="#ref-leeperPoliticalPartiesMotivated2014" role="doc-biblioref">Leeper and Slothuus 2014</a>; <a href="#ref-slothuusPoliticalPartiesMotivated2010" role="doc-biblioref">Slothuus and de Vreese 2010</a>)</span>. This cue-taking is best understood through the lens of motivated reasoning, wherein citizens process information in a way that protects and reinforces their prior partisan commitments rather than arriving at accuracy <span class="citation" data-cites="taberMotivatedSkepticismEvaluation2006 petersenMotivatedReasoningPolitical2013">(<a href="#ref-petersenMotivatedReasoningPolitical2013" role="doc-biblioref">Petersen et al. 2013</a>; <a href="#ref-taberMotivatedSkepticismEvaluation2006" role="doc-biblioref">Taber and Lodge 2006</a>)</span>. As elite polarization has intensified, party cues have become an increasingly powerful, and at times dominant, force in opinion formation, often overwhelming the effect of substantive policy information <span class="citation" data-cites="druckmanHowElitePartisan2013">(<a href="#ref-druckmanHowElitePartisan2013" role="doc-biblioref">Druckman, Peterson, and Slothuus 2013</a>)</span>.</p>
+<p>Climate change and energy policy are particularly susceptible to this dynamic. As shown by Feldman and Hart <span class="citation" data-cites="feldmanClimateChangePolarizing2018">(<a href="#ref-feldmanClimateChangePolarizing2018" role="doc-biblioref">2018</a>)</span>, simply attaching a climate change frame or a cue from a Democratic source to an energy policy is often enough to depress support among Republicans, even when the underlying policy is left unchanged. Similarly, out-group cues from Democratic elites have been found to produce a durable backlash in climate skepticism among Republican identifiers <span class="citation" data-cites="merkleyPartyCuesNews2021">(<a href="#ref-merkleyPartyCuesNews2021" role="doc-biblioref">Merkley and Stecula 2021</a>)</span>, and partisan cue-taking extends to more recent and salient energy proposals, such as the Green New Deal <span class="citation" data-cites="mcconnellGreenNewDeal2022">(<a href="#ref-mcconnellGreenNewDeal2022" role="doc-biblioref">McConnell 2022</a>)</span>. These findings suggest that Trump cues and climate cues are likely to activate similar, but oppositely signed, partisan reactions to actions on energy: conservative Republicans are likely to become more supportive when an action is cued as coming from Trump or as countering climate change, whereas liberal Democrats are likely to become less supportive under the same cues.</p>
+<p>Whether cue-taking of this kind is more pronounced among the less educated, however, is not as settled as the classic heuristics literature might suggest. Early accounts of the partisan heuristic emphasize that cue-taking substitutes for the cognitive effort required to process substantive information, implying that citizens with fewer cognitive resources, such as those without a college degree, should rely on party cues the most <span class="citation" data-cites="kamWhoToesParty2005">(<a href="#ref-kamWhoToesParty2005" role="doc-biblioref">Kam 2005</a>)</span>. Numeracy research supports this account: low-numeracy respondents rely more heavily on party cues, while high-numeracy respondents are more likely to update toward substantive policy information when it is available <span class="citation" data-cites="merolaNumeracyPersuasiveEffect2016">(<a href="#ref-merolaNumeracyPersuasiveEffect2016" role="doc-biblioref">Mérola and Hitt 2016</a>)</span>. Yet effortful thinking alone does not appear to be sufficient to reduce cue reliance; it is the availability of policy information, not cognitive effort per se, that weakens party cue effects <span class="citation" data-cites="tappinEstimatingCausalEffects2026">(<a href="#ref-tappinEstimatingCausalEffects2026" role="doc-biblioref">Tappin and McKay 2026</a>)</span>. Complicating the picture further, political sophistication and education are also associated with more effective motivated reasoning, meaning that better-informed citizens may process cue-congruent information more efficiently rather than less <span class="citation" data-cites="kahanIdeologyMotivatedReasoning2013">(<a href="#ref-kahanIdeologyMotivatedReasoning2013" role="doc-biblioref">Kahan 2013</a>)</span>. Bakker, Lelkes, and Malka <span class="citation" data-cites="bakkerUnderstandingPartisanCue2019">(<a href="#ref-bakkerUnderstandingPartisanCue2019" role="doc-biblioref">2019</a>)</span> similarly find that cue receptivity is not simply a function of bounded rationality but is strongest when cognitive resources are placed in service of expressive, identity-affirming reasoning. Consistent with this more conditional pattern, education has been found to amplify, rather than dampen, partisan polarization over climate change, particularly among conservatives <span class="citation" data-cites="hamiltonEducationPoliticsOpinions2011">(<a href="#ref-hamiltonEducationPoliticsOpinions2011" role="doc-biblioref">Hamilton 2011</a>)</span>. Together, this literature suggests that a college degree is likely to shape responsiveness to Trump and climate cues, but the direction of that relationship is less straightforward than the low-information heuristic model implies.</p>
+<p>In the next section, I describe the specific actions on energy included in the survey experiment and the hypotheses derived from this literature.</p>
+</section>
+<section id="trump-actions-on-energy" class="level1">
+<h1>Trump Actions on Energy</h1>
+<p>trump actions in his first year as president for the second time</p>
+<section id="hypotheses" class="level2">
+<h2 class="anchored" data-anchor-id="hypotheses">Hypotheses</h2>
 <blockquote class="blockquote">
 <p>H1: Conservative Republicans who receive the Trump or climate change cue will be more supportive of Trump’s actions on energy than others</p>
 </blockquote>
@@ -98,11 +130,19 @@ ul.task-list li input[type="checkbox"] {
 <p>H4: Liberal Democrats without a college degree who receive the Trump cue will be less supportive of Trump’s actions on energy than others</p>
 </blockquote>
 </section>
+</section>
 <section id="data-and-measures" class="level1">
 <h1>Data and Measures</h1>
 <p>Data is from a public opinion survey and weighted to match the population on key demographics and partisanship</p>
 <p>Conservative Republican = conRep Liberal Democrats = libDem college = 1 if college degree; 0 if not</p>
 <p>I also control for demographics including age, male, white, and income</p>
+<section id="trump-actions" class="level2">
+<h2 class="anchored" data-anchor-id="trump-actions">Trump Actions</h2>
+<p>Recently, the [Trump Administration/Federal government] took several actions to shape electricity generation in the U.S.</p>
+<p>[Scientists are concerned that the actions associated with coal, wind, and solar energy will make climate change worse.]</p>
+<p>Using a scale of 1 to 7, where 1 means strongly oppose and 7 means strongly support, how do you feel about the following actions of the [Trump Administration/Federal government]? [randomize]</p>
+<p>• The [Trump Administration/Federal government] limiting the eligibility of wind and solar energy projects for federal tax credits • The [Trump Administration/Federal government] requiring coal plants that were set to retire to remain open • The [Trump Administration/Federal government] opening 13.1 million acres of federal land for coal leasing • The [Trump Administration/Federal government] cancelling an offshore wind project that was nearly complete • The [Trump Administration/Federal government] shortening the time it takes to approve and license the construction of new nuclear power plants</p>
+</section>
 </section>
 <section id="results" class="level1">
 <h1>Results</h1>
@@ -120,25 +160,25 @@ Table&nbsp;1: Weighted OLS Models of Support for Trump’s Energy Actions
 
     <script>
       // Create table-specific functions using external factory
-      const tableFns_l2bm4fulz5jx8k2agw1w = TinyTable.createTableFunctions("tinytable_l2bm4fulz5jx8k2agw1w");
+      const tableFns_o904g32ybas6xn9ikv7v = TinyTable.createTableFunctions("tinytable_o904g32ybas6xn9ikv7v");
       // tinytable span after
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: '32', j: 2 }, { i: '32', j: 3 }, { i: '32', j: 4 }, { i: '32', j: 5 }, { i: '32', j: 6 } ], css_id: 'tinytable_css_zxpmqbtayuqxf9qr3a5b',}, 
-          { positions: [ { i: '30', j: 2 }, { i: '30', j: 3 }, { i: '30', j: 4 }, { i: '30', j: 5 }, { i: '30', j: 6 } ], css_id: 'tinytable_css_7kqsohjfrqoz7nkv9ra1',}, 
-          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 }, { i: '22', j: 2 }, { i: '23', j: 2 }, { i: '24', j: 2 }, { i: '25', j: 2 }, { i: '26', j: 2 }, { i: '27', j: 2 }, { i: '28', j: 2 }, { i: '29', j: 2 }, { i: '31', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '17', j: 3 }, { i: '18', j: 3 }, { i: '19', j: 3 }, { i: '20', j: 3 }, { i: '21', j: 3 }, { i: '22', j: 3 }, { i: '23', j: 3 }, { i: '24', j: 3 }, { i: '25', j: 3 }, { i: '26', j: 3 }, { i: '27', j: 3 }, { i: '28', j: 3 }, { i: '29', j: 3 }, { i: '31', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 }, { i: '16', j: 4 }, { i: '17', j: 4 }, { i: '18', j: 4 }, { i: '19', j: 4 }, { i: '20', j: 4 }, { i: '21', j: 4 }, { i: '22', j: 4 }, { i: '23', j: 4 }, { i: '24', j: 4 }, { i: '25', j: 4 }, { i: '26', j: 4 }, { i: '27', j: 4 }, { i: '28', j: 4 }, { i: '29', j: 4 }, { i: '31', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '12', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 }, { i: '15', j: 5 }, { i: '16', j: 5 }, { i: '17', j: 5 }, { i: '18', j: 5 }, { i: '19', j: 5 }, { i: '20', j: 5 }, { i: '21', j: 5 }, { i: '22', j: 5 }, { i: '23', j: 5 }, { i: '24', j: 5 }, { i: '25', j: 5 }, { i: '26', j: 5 }, { i: '27', j: 5 }, { i: '28', j: 5 }, { i: '29', j: 5 }, { i: '31', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '5', j: 6 }, { i: '6', j: 6 }, { i: '7', j: 6 }, { i: '8', j: 6 }, { i: '9', j: 6 }, { i: '10', j: 6 }, { i: '11', j: 6 }, { i: '12', j: 6 }, { i: '13', j: 6 }, { i: '14', j: 6 }, { i: '15', j: 6 }, { i: '16', j: 6 }, { i: '17', j: 6 }, { i: '18', j: 6 }, { i: '19', j: 6 }, { i: '20', j: 6 }, { i: '21', j: 6 }, { i: '22', j: 6 }, { i: '23', j: 6 }, { i: '24', j: 6 }, { i: '25', j: 6 }, { i: '26', j: 6 }, { i: '27', j: 6 }, { i: '28', j: 6 }, { i: '29', j: 6 }, { i: '31', j: 6 } ], css_id: 'tinytable_css_y1x1jdbd61suunxpmgks',}, 
-          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 } ], css_id: 'tinytable_css_3yq5nkcbnxju9ka90f2k',}, 
-          { positions: [ { i: '32', j: 1 } ], css_id: 'tinytable_css_fn64pw8oxj2w14eyn9f6',}, 
-          { positions: [ { i: '30', j: 1 } ], css_id: 'tinytable_css_h9kmnkxjxt4as43yslle',}, 
-          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 }, { i: '22', j: 1 }, { i: '23', j: 1 }, { i: '24', j: 1 }, { i: '25', j: 1 }, { i: '26', j: 1 }, { i: '27', j: 1 }, { i: '28', j: 1 }, { i: '29', j: 1 }, { i: '31', j: 1 } ], css_id: 'tinytable_css_d5tawul0kp5akzajed24',}, 
-          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_9m7pb5cf6up0snflmlud',}, 
+          { positions: [ { i: '32', j: 2 }, { i: '32', j: 3 }, { i: '32', j: 4 }, { i: '32', j: 5 }, { i: '32', j: 6 } ], css_id: 'tinytable_css_0fu7eyoi3iuwz979oc44',}, 
+          { positions: [ { i: '30', j: 2 }, { i: '30', j: 3 }, { i: '30', j: 4 }, { i: '30', j: 5 }, { i: '30', j: 6 } ], css_id: 'tinytable_css_pmmak8hjkma1py5tmckw',}, 
+          { positions: [ { i: '1', j: 2 }, { i: '2', j: 2 }, { i: '3', j: 2 }, { i: '4', j: 2 }, { i: '5', j: 2 }, { i: '6', j: 2 }, { i: '7', j: 2 }, { i: '8', j: 2 }, { i: '9', j: 2 }, { i: '10', j: 2 }, { i: '11', j: 2 }, { i: '12', j: 2 }, { i: '13', j: 2 }, { i: '14', j: 2 }, { i: '15', j: 2 }, { i: '16', j: 2 }, { i: '17', j: 2 }, { i: '18', j: 2 }, { i: '19', j: 2 }, { i: '20', j: 2 }, { i: '21', j: 2 }, { i: '22', j: 2 }, { i: '23', j: 2 }, { i: '24', j: 2 }, { i: '25', j: 2 }, { i: '26', j: 2 }, { i: '27', j: 2 }, { i: '28', j: 2 }, { i: '29', j: 2 }, { i: '31', j: 2 }, { i: '1', j: 3 }, { i: '2', j: 3 }, { i: '3', j: 3 }, { i: '4', j: 3 }, { i: '5', j: 3 }, { i: '6', j: 3 }, { i: '7', j: 3 }, { i: '8', j: 3 }, { i: '9', j: 3 }, { i: '10', j: 3 }, { i: '11', j: 3 }, { i: '12', j: 3 }, { i: '13', j: 3 }, { i: '14', j: 3 }, { i: '15', j: 3 }, { i: '16', j: 3 }, { i: '17', j: 3 }, { i: '18', j: 3 }, { i: '19', j: 3 }, { i: '20', j: 3 }, { i: '21', j: 3 }, { i: '22', j: 3 }, { i: '23', j: 3 }, { i: '24', j: 3 }, { i: '25', j: 3 }, { i: '26', j: 3 }, { i: '27', j: 3 }, { i: '28', j: 3 }, { i: '29', j: 3 }, { i: '31', j: 3 }, { i: '1', j: 4 }, { i: '2', j: 4 }, { i: '3', j: 4 }, { i: '4', j: 4 }, { i: '5', j: 4 }, { i: '6', j: 4 }, { i: '7', j: 4 }, { i: '8', j: 4 }, { i: '9', j: 4 }, { i: '10', j: 4 }, { i: '11', j: 4 }, { i: '12', j: 4 }, { i: '13', j: 4 }, { i: '14', j: 4 }, { i: '15', j: 4 }, { i: '16', j: 4 }, { i: '17', j: 4 }, { i: '18', j: 4 }, { i: '19', j: 4 }, { i: '20', j: 4 }, { i: '21', j: 4 }, { i: '22', j: 4 }, { i: '23', j: 4 }, { i: '24', j: 4 }, { i: '25', j: 4 }, { i: '26', j: 4 }, { i: '27', j: 4 }, { i: '28', j: 4 }, { i: '29', j: 4 }, { i: '31', j: 4 }, { i: '1', j: 5 }, { i: '2', j: 5 }, { i: '3', j: 5 }, { i: '4', j: 5 }, { i: '5', j: 5 }, { i: '6', j: 5 }, { i: '7', j: 5 }, { i: '8', j: 5 }, { i: '9', j: 5 }, { i: '10', j: 5 }, { i: '11', j: 5 }, { i: '12', j: 5 }, { i: '13', j: 5 }, { i: '14', j: 5 }, { i: '15', j: 5 }, { i: '16', j: 5 }, { i: '17', j: 5 }, { i: '18', j: 5 }, { i: '19', j: 5 }, { i: '20', j: 5 }, { i: '21', j: 5 }, { i: '22', j: 5 }, { i: '23', j: 5 }, { i: '24', j: 5 }, { i: '25', j: 5 }, { i: '26', j: 5 }, { i: '27', j: 5 }, { i: '28', j: 5 }, { i: '29', j: 5 }, { i: '31', j: 5 }, { i: '1', j: 6 }, { i: '2', j: 6 }, { i: '3', j: 6 }, { i: '4', j: 6 }, { i: '5', j: 6 }, { i: '6', j: 6 }, { i: '7', j: 6 }, { i: '8', j: 6 }, { i: '9', j: 6 }, { i: '10', j: 6 }, { i: '11', j: 6 }, { i: '12', j: 6 }, { i: '13', j: 6 }, { i: '14', j: 6 }, { i: '15', j: 6 }, { i: '16', j: 6 }, { i: '17', j: 6 }, { i: '18', j: 6 }, { i: '19', j: 6 }, { i: '20', j: 6 }, { i: '21', j: 6 }, { i: '22', j: 6 }, { i: '23', j: 6 }, { i: '24', j: 6 }, { i: '25', j: 6 }, { i: '26', j: 6 }, { i: '27', j: 6 }, { i: '28', j: 6 }, { i: '29', j: 6 }, { i: '31', j: 6 } ], css_id: 'tinytable_css_8u9ldv996sl832m93kep',}, 
+          { positions: [ { i: '0', j: 2 }, { i: '0', j: 3 }, { i: '0', j: 4 }, { i: '0', j: 5 }, { i: '0', j: 6 } ], css_id: 'tinytable_css_it3fkbygw757ywpbwf07',}, 
+          { positions: [ { i: '32', j: 1 } ], css_id: 'tinytable_css_j525f7vclprdmqc193ab',}, 
+          { positions: [ { i: '30', j: 1 } ], css_id: 'tinytable_css_ufo8o1lgqlx6gczyjqtj',}, 
+          { positions: [ { i: '1', j: 1 }, { i: '2', j: 1 }, { i: '3', j: 1 }, { i: '4', j: 1 }, { i: '5', j: 1 }, { i: '6', j: 1 }, { i: '7', j: 1 }, { i: '8', j: 1 }, { i: '9', j: 1 }, { i: '10', j: 1 }, { i: '11', j: 1 }, { i: '12', j: 1 }, { i: '13', j: 1 }, { i: '14', j: 1 }, { i: '15', j: 1 }, { i: '16', j: 1 }, { i: '17', j: 1 }, { i: '18', j: 1 }, { i: '19', j: 1 }, { i: '20', j: 1 }, { i: '21', j: 1 }, { i: '22', j: 1 }, { i: '23', j: 1 }, { i: '24', j: 1 }, { i: '25', j: 1 }, { i: '26', j: 1 }, { i: '27', j: 1 }, { i: '28', j: 1 }, { i: '29', j: 1 }, { i: '31', j: 1 } ], css_id: 'tinytable_css_vxs8c0k89bqctydonq6g',}, 
+          { positions: [ { i: '0', j: 1 } ], css_id: 'tinytable_css_86lvxqao2mbk9zgi8p85',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  tableFns_l2bm4fulz5jx8k2agw1w.styleCell(cell.i, cell.j, group.css_id);
+                  tableFns_o904g32ybas6xn9ikv7v.styleCell(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -147,17 +187,17 @@ Table&nbsp;1: Weighted OLS Models of Support for Trump’s Energy Actions
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vincentarelbundock/tinytable@main/inst/tinytable.css">
     <style>
     /* tinytable css entries after */
-    #tinytable_l2bm4fulz5jx8k2agw1w td.tinytable_css_zxpmqbtayuqxf9qr3a5b, #tinytable_l2bm4fulz5jx8k2agw1w th.tinytable_css_zxpmqbtayuqxf9qr3a5b {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center; font-size: 0.7em }
-    #tinytable_l2bm4fulz5jx8k2agw1w td.tinytable_css_7kqsohjfrqoz7nkv9ra1, #tinytable_l2bm4fulz5jx8k2agw1w th.tinytable_css_7kqsohjfrqoz7nkv9ra1 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center; font-size: 0.7em }
-    #tinytable_l2bm4fulz5jx8k2agw1w td.tinytable_css_y1x1jdbd61suunxpmgks, #tinytable_l2bm4fulz5jx8k2agw1w th.tinytable_css_y1x1jdbd61suunxpmgks { text-align: center; font-size: 0.7em }
-    #tinytable_l2bm4fulz5jx8k2agw1w td.tinytable_css_3yq5nkcbnxju9ka90f2k, #tinytable_l2bm4fulz5jx8k2agw1w th.tinytable_css_3yq5nkcbnxju9ka90f2k {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center; font-size: 0.7em }
-    #tinytable_l2bm4fulz5jx8k2agw1w td.tinytable_css_fn64pw8oxj2w14eyn9f6, #tinytable_l2bm4fulz5jx8k2agw1w th.tinytable_css_fn64pw8oxj2w14eyn9f6 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left; font-size: 0.7em }
-    #tinytable_l2bm4fulz5jx8k2agw1w td.tinytable_css_h9kmnkxjxt4as43yslle, #tinytable_l2bm4fulz5jx8k2agw1w th.tinytable_css_h9kmnkxjxt4as43yslle {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left; font-size: 0.7em }
-    #tinytable_l2bm4fulz5jx8k2agw1w td.tinytable_css_d5tawul0kp5akzajed24, #tinytable_l2bm4fulz5jx8k2agw1w th.tinytable_css_d5tawul0kp5akzajed24 { text-align: left; font-size: 0.7em }
-    #tinytable_l2bm4fulz5jx8k2agw1w td.tinytable_css_9m7pb5cf6up0snflmlud, #tinytable_l2bm4fulz5jx8k2agw1w th.tinytable_css_9m7pb5cf6up0snflmlud {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left; font-size: 0.7em }
+    #tinytable_o904g32ybas6xn9ikv7v td.tinytable_css_0fu7eyoi3iuwz979oc44, #tinytable_o904g32ybas6xn9ikv7v th.tinytable_css_0fu7eyoi3iuwz979oc44 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center; font-size: 0.7em }
+    #tinytable_o904g32ybas6xn9ikv7v td.tinytable_css_pmmak8hjkma1py5tmckw, #tinytable_o904g32ybas6xn9ikv7v th.tinytable_css_pmmak8hjkma1py5tmckw {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center; font-size: 0.7em }
+    #tinytable_o904g32ybas6xn9ikv7v td.tinytable_css_8u9ldv996sl832m93kep, #tinytable_o904g32ybas6xn9ikv7v th.tinytable_css_8u9ldv996sl832m93kep { text-align: center; font-size: 0.7em }
+    #tinytable_o904g32ybas6xn9ikv7v td.tinytable_css_it3fkbygw757ywpbwf07, #tinytable_o904g32ybas6xn9ikv7v th.tinytable_css_it3fkbygw757ywpbwf07 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: center; font-size: 0.7em }
+    #tinytable_o904g32ybas6xn9ikv7v td.tinytable_css_j525f7vclprdmqc193ab, #tinytable_o904g32ybas6xn9ikv7v th.tinytable_css_j525f7vclprdmqc193ab {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.08em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left; font-size: 0.7em }
+    #tinytable_o904g32ybas6xn9ikv7v td.tinytable_css_ufo8o1lgqlx6gczyjqtj, #tinytable_o904g32ybas6xn9ikv7v th.tinytable_css_ufo8o1lgqlx6gczyjqtj {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 0; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.1em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left; font-size: 0.7em }
+    #tinytable_o904g32ybas6xn9ikv7v td.tinytable_css_vxs8c0k89bqctydonq6g, #tinytable_o904g32ybas6xn9ikv7v th.tinytable_css_vxs8c0k89bqctydonq6g { text-align: left; font-size: 0.7em }
+    #tinytable_o904g32ybas6xn9ikv7v td.tinytable_css_86lvxqao2mbk9zgi8p85, #tinytable_o904g32ybas6xn9ikv7v th.tinytable_css_86lvxqao2mbk9zgi8p85 {  position: relative; --border-bottom: 1; --border-left: 0; --border-right: 0; --border-top: 1; --line-color-bottom: var(--tt-line-color); --line-color-left: var(--tt-line-color); --line-color-right: var(--tt-line-color); --line-color-top: var(--tt-line-color); --line-width-bottom: 0.05em; --line-width-left: 0.1em; --line-width-right: 0.1em; --line-width-top: 0.08em; --trim-bottom-left: 0%; --trim-bottom-right: 0%; --trim-left-bottom: 0%; --trim-left-top: 0%; --trim-right-bottom: 0%; --trim-right-top: 0%; --trim-top-left: 0%; --trim-top-right: 0%; ; text-align: left; font-size: 0.7em }
     </style>
     <div class="container">
-      <table class="tinytable" id="tinytable_l2bm4fulz5jx8k2agw1w" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
+      <table class="tinytable" id="tinytable_o904g32ybas6xn9ikv7v" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing="true">
         
         <thead>
               <tr>
@@ -480,11 +520,58 @@ Figure&nbsp;2: Predicted Support by Trump Cue and College Degree, Conservative R
 <h1>Conclusion</h1>
 <div style="page-break-after: always;"></div>
 </section>
-<section id="references" class="level1">
-<h1>References</h1>
+<section id="references" class="level1 unnumbered">
+
+
 </section>
 
-</main>
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-bakkerUnderstandingPartisanCue2019" class="csl-entry" role="listitem">
+Bakker, Bert, Yphtach Lelkes, and Ariel Malka. 2019. <span>“Understanding <span>Partisan Cue Receptivity</span>: <span>Tests</span> of <span>Predictions</span> from the <span>Bounded Rationality</span> and <span>Expressive Utility Perspectives</span>.”</span> <em>The Journal of Politics</em>.
+</div>
+<div id="ref-druckmanHowElitePartisan2013" class="csl-entry" role="listitem">
+Druckman, James N., Erik Peterson, and Rune Slothuus. 2013. <span>“How <span>Elite Partisan Polarization Affects Public Opinion Formation</span>.”</span> <em>American Political Science Review</em> 107(01): 57–79.
+</div>
+<div id="ref-feldmanClimateChangePolarizing2018" class="csl-entry" role="listitem">
+Feldman, Lauren, and P. Sol Hart. 2018. <span>“Climate <span>Change</span> as a <span>Polarizing Cue</span>: <span>Framing Effects</span> on <span>Public Support</span> for <span>Low-Carbon Energy Policies</span>.”</span> <em>Global Environmental Change</em> 51: 54–66.
+</div>
+<div id="ref-hamiltonEducationPoliticsOpinions2011" class="csl-entry" role="listitem">
+Hamilton, Lawrence C. 2011. <span>“Education, <span>Politics</span> and <span>Opinions</span> about <span>Climate Change Evidence</span> for <span>Interaction Effects</span>.”</span> <em>Climatic Change</em> 104(2): 231–42.
+</div>
+<div id="ref-kahanIdeologyMotivatedReasoning2013" class="csl-entry" role="listitem">
+Kahan, Dan M. 2013. <span>“Ideology, <span>Motivated Reasoning</span>, and <span>Cognitive Reﬂection</span>.”</span> <em>Judgement and Decision Making</em> 8(4): 407–24.
+</div>
+<div id="ref-kamWhoToesParty2005" class="csl-entry" role="listitem">
+Kam, Cindy. 2005. <span>“Who <span>Toes</span> the <span>Party Line</span>? <span>Cues</span>, <span>Values</span>, and <span>Individual Differences</span>.”</span> <em>Political Behavior</em> 27(2): 163–82.
+</div>
+<div id="ref-leeperPoliticalPartiesMotivated2014" class="csl-entry" role="listitem">
+Leeper, Thomas J., and Rune Slothuus. 2014. <span>“Political <span>Parties</span>, <span>Motivated Reasoning</span>, and <span>Public Opinion Formation</span>.”</span> <em>Political Psychology</em> 35(S1): 129–56.
+</div>
+<div id="ref-mcconnellGreenNewDeal2022" class="csl-entry" role="listitem">
+McConnell, Kathryn. 2022. <span>“<span>‘<span>The Green New Deal</span>’</span> as <span>Partisan Cue</span>: <span>Evidence</span> from a <span>Survey Experiment</span> in the <span>Rural U</span>.<span>S</span>.”</span> <em>Environmental Politics</em> 0(0): 1–33.
+</div>
+<div id="ref-merkleyPartyCuesNews2021" class="csl-entry" role="listitem">
+Merkley, Eric, and Dominik A. Stecula. 2021. <span>“Party <span>Cues</span> in the <span>News</span>: <span>Democratic Elites</span>, <span>Republican Backlash</span>, and the <span>Dynamics</span> of <span>Climate Skepticism</span>.”</span> <em>British Journal of Political Science</em> 51(4): 1439–56.
+</div>
+<div id="ref-merolaNumeracyPersuasiveEffect2016" class="csl-entry" role="listitem">
+Mérola, Vittorio, and Matthew P. Hitt. 2016. <span>“Numeracy and the <span>Persuasive Effect</span> of <span>Policy Information</span> and <span>Party Cues</span>.”</span> <em>Public Opinion Quarterly</em> 80(2): 554–62.
+</div>
+<div id="ref-petersenMotivatedReasoningPolitical2013" class="csl-entry" role="listitem">
+Petersen, Michael Bang, Martin Skov, Søren Serritzlew, and Thomas Ramsøy. 2013. <span>“Motivated <span>Reasoning</span> and <span>Political Parties</span>: <span>Evidence</span> for <span>Increased Processing</span> in the <span>Face</span> of <span>Party Cues</span>.”</span> <em>Political Behavior</em> 35(4): 831–54.
+</div>
+<div id="ref-schaffnerPartisanHeuristicLowInformation2002" class="csl-entry" role="listitem">
+Schaffner, Brian F., and Matthew J. Streb. 2002. <span>“The <span>Partisan Heuristic</span> in <span>Low-Information Elections</span>.”</span> <em>Public Opinion Quarterly</em> 66(4): 559–81.
+</div>
+<div id="ref-slothuusPoliticalPartiesMotivated2010" class="csl-entry" role="listitem">
+Slothuus, Rune, and Claes de Vreese. 2010. <span>“Political <span>Parties</span>, <span>Motivated Reasoning</span>, and <span>Issue Framing Effects</span>.”</span> <em>The Journal of Politics</em> 72(3): 630–45.
+</div>
+<div id="ref-taberMotivatedSkepticismEvaluation2006" class="csl-entry" role="listitem">
+Taber, Charles S., and Milton Lodge. 2006. <span>“Motivated <span>Skepticism</span> in the <span>Evaluation</span> of <span>Political Beliefs</span>.”</span> <em>American Journal of Political Science</em> 50(3): 755–69.
+</div>
+<div id="ref-tappinEstimatingCausalEffects2026" class="csl-entry" role="listitem">
+Tappin, Ben M., and Ryan McKay. 2026. <span>“Estimating the <span>Causal Effects</span> of <span>Cognitive Effort</span> and <span>Policy Information</span> on <span>Party Cue Influence</span>.”</span> <em>Political Psychology</em> 47(2).
+</div>
+</div></section></div></main>
 <!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {

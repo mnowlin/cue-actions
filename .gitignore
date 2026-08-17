@@ -8,6 +8,7 @@ literature/
 data/
 references.bib
 american-political-science-association.csl
+nowlin-style-profile.md
 
 /.quarto/
 **/*.quarto_ipynb

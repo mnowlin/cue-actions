@@ -23,6 +23,42 @@ second term.
 
 ## Session History
 
+### Session 3 — 2026-08-17 (Literature search + Cues and Cue-Taking section)
+
+- Connected the Undermind MCP (account `matthew.nowlin@uta.edu`) and used the
+  existing `cue-actions` Undermind workspace (created empty at project setup).
+- Launched a deep search — "Education and partisan cue-taking" — asking
+  whether lower-education respondents are more responsive to partisan cues.
+  Result (52 papers): the literature rejects a simple "low education = more
+  cue-taking" model; cue receptivity is conditional (numeracy, expressive
+  utility, issue type) rather than uniformly higher among the less educated.
+  Added the top 23 papers to a new `/literature/` folder in the workspace
+  (Undermind-side, not the git-ignored local `literature/` folder).
+- Drafted the "Cues and Cue-Taking" theory section in `cue-actions.qmd`
+  (per `nowlin-style-profile.md`), grounded in that search: partisan cues as
+  heuristic/motivated reasoning, climate-specific cue backlash effects, and
+  the more conditional education/numeracy findings that motivate H3/H4.
+  Matched 9 new citation keys (Kam05, Schaffner02, Slothuus10, Leeper14,
+  Taber06, Petersen13, Druckman13, Feldman18, Merkley21, McConnell22,
+  Merola16, Tappin21/26, Kahan13, Bakker19, Hamilton11) against the master
+  bib (`Manuscript-Files/refs.bib`) by title/author before citing — all
+  matched; `export-cited-refs.R` confirms 15/15 cited keys resolve, and the
+  HTML render shows no unresolved-citation markers.
+- User hand-added one sentence noting the Trump cue may work differently
+  from a generic partisan cue given Trump's claimed strength among white
+  working-class voters — motivated an ad hoc subgroup check (see below).
+- Ran two exploratory subgroup analyses at the user's request, **not saved
+  to any script** (diagnostic only, results reported in chat):
+  1. H1/H2 terms among white, non-college respondents only (N = 906;
+     college is constant in this subsample so H3/H4 are untestable there).
+  2. Full H1-H4 model (including college interactions) restricted to white
+     respondents only (N = 2,107), so H3/H4 could be tested within race.
+     No H3/H4 term reached significance; the only significant cue term
+     was climate cue x conRep on tax credits, in the direction opposite H1.
+- Added `nowlin-style-profile.md` to `.gitignore` (project-setup step this
+  project had missed — the style profile is shared across projects via
+  `01-RESEARCH/project-files/`, not meant to be tracked per-project).
+
 ### Session 1 — 2026-07-21 (Project setup)
 
 - Set up the project structure from the standard project-files template:
