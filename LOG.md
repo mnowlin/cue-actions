@@ -23,6 +23,62 @@ second term.
 
 ## Session History
 
+### Session 4 — 2026-08-25 (Robustness check, descriptive stats, exploratory model, media-grounded intro)
+
+- Compared the primary H1-H4 model with and without demographic controls
+  (`age`, `male`, `white`, `inc`) as a diagnostic (scratch script, not saved).
+  Estimates barely moved; only one term crossed a significance threshold
+  (Cancel Wind's `trump.cue:conRep`, n.s. → marginal). Per user decision,
+  made the no-controls specification the permanent primary model: removed
+  the four control terms from `rhs` in `scripts/manuscript-prep.R`, updated
+  `table_notes`, simplified `predict_grid()`/removed the now-unused
+  `controls_at_mean` block, and updated the H1-H4 bullet text and summary
+  paragraph in `cue-actions.qmd` with the refit estimates/p-values.
+- Added a descriptive statistics table (`desc_table` in `manuscript-prep.R`,
+  section 1b): survey-weighted mean/SD (`svymean`/`svyvar`) and unweighted
+  range for the five DV items and the three focal IVs (conRep, libDem,
+  college). Placed as `tbl-descriptives` in "Data and Measures," right after
+  the IV description paragraph.
+- Added inline R code reporting the Cancel Wind and Nuclear weighted means
+  (`wtd_mean()`) in the "Data and Measures" prose, replacing placeholder text.
+- Moved `tbl-results` (the main regression table) from the Results section
+  into the Appendix; Results now leads with the two prediction figures and
+  the hypothesis bullets.
+- User asked whether the climate cue's effect is also moderated by education
+  (`fig-college` only ever tested this for the Trump cue, per H3/H4). Fit an
+  exploratory model with `climate.cue:college` and its `conRep`/`libDem`
+  interactions — no term reached significance in any of the five DVs (all
+  *p* > .20). Initially added these terms directly to the shared primary
+  model, which measurably weakened two preregistered H1/H2 results (Tax
+  Credits climate x conRep: ** → †); at the user's choice, reverted the
+  primary model to its original H1-H4 spec and instead fit the exploratory
+  terms as a separate model (`models_explore`/`results_table_explore` in
+  `manuscript-prep.R`, section 6). Added `tbl-results-explore` to the
+  Appendix and a paragraph in Results describing the null exploratory
+  finding.
+- Searched the `cue-actions` Undermind workspace for literature on Trump
+  support among non-college voters (the "diploma divide" / education
+  realignment literature). Drafted two new paragraphs in "Cues and
+  Cue-Taking" (after the existing working-class-cue sentence, before
+  Hypotheses) grounding that sentence in the realignment literature and then
+  complicating it with a contested-evidence caveat that motivates testing
+  H3/H4 empirically. Added 6 new entries to the master bib
+  (`Manuscript-Files/refs.bib`, tagged `project/cue-actions`): Kitschelt &
+  Rehm 2019, Zingher 2022, Sances 2019, Morgan & Lee 2018, Abramowitz &
+  McCoy 2019, Carnes & Lupu 2020.
+- Web-searched for media coverage of the real Trump administration actions
+  behind each of the five DVs (all occurred 2025-2026) and used them to
+  finish the incomplete opening paragraph of the Introduction: EO 14156
+  national energy emergency (Jan 2025), Treasury/IRS tax-credit rule
+  tightening (Aug 2025), DOE emergency orders forcing coal-plant retention
+  (MI/WA/IN/CO), Interior's 13.1M-acre coal leasing opening (Sept 2025),
+  the East Coast offshore wind construction halt (Dec 2025), and the NRC
+  licensing-speedup executive orders (May 2025). Added 6 more `@online`
+  entries to the master bib for these sources (DOI, DOE, NPR, CPR,
+  Washington Post, Columbia Sabin Center), also tagged `project/cue-actions`.
+- `export-cited-refs.R` confirms all cited keys resolve (30/30 by end of
+  session); both HTML and PDF render cleanly throughout.
+
 ### Session 3 — 2026-08-17 (Literature search + Cues and Cue-Taking section)
 
 - Connected the Undermind MCP (account `matthew.nowlin@uta.edu`) and used the

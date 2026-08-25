@@ -17,6 +17,42 @@ d <- read.csv("data/cueActionsDataWeighted.csv")
 
 design <- svydesign(ids = ~1, weights = ~weight, data = d)
 
+# Unweighted condition sample sizes, for in-text reporting of random assignment.
+n_trump   <- sum(d$trump.cue == 1)
+n_climate <- sum(d$climate.cue == 1)
+n_control <- sum(d$control == 1)
+n_total   <- nrow(d)
+
+# --- 1b. Descriptive statistics table ----------------------------------------
+# Survey-weighted mean and SD, plus unweighted range, for the five DV items
+# and the three focal IVs (conRep, libDem, college).
+
+desc_labels <- c(
+  "fed.action.tax.credits"       = "Tax Credits",
+  "fed.action.coal.keep.open"    = "Coal Open",
+  "fed.action.coal.leasing"      = "Coal Leasing",
+  "fed.action.cancel.wind"       = "Cancel Wind",
+  "fed.action.nuclear.licensing" = "Nuclear",
+  "conRep"                       = "Cons. Republican",
+  "libDem"                       = "Lib. Democrat",
+  "college"                      = "College"
+)
+
+desc_row <- function(v) {
+  x <- d[[v]]
+  data.frame(
+    Variable = desc_labels[[v]],
+    Range    = paste0(min(x, na.rm = TRUE), "-", max(x, na.rm = TRUE)),
+    Mean     = round(as.numeric(svymean(as.formula(paste0("~", v)), design = design)), 2),
+    SD       = round(sqrt(as.numeric(svyvar(as.formula(paste0("~", v)), design = design))), 2)
+  )
+}
+
+desc_table <- lapply(names(desc_labels), desc_row) |>
+  bind_rows() |>
+  tt() |>
+  style_tt(fontsize = 0.7)
+
 # --- 2. Model specification --------------------------------------------------
 # Baseline categories: control condition, moderate/other political identity,
 # no college degree.
@@ -29,6 +65,11 @@ design <- svydesign(ids = ~1, weights = ~weight, data = d)
 #                                                  among non-college conRep)
 #   trump.cue:college:libDem                   -> H4 (effect concentrated
 #                                                  among non-college libDem)
+#
+# A separate exploratory model with climate.cue:college:conRep /
+# climate.cue:college:libDem terms (not preregistered) is fit below in
+# section 6, kept out of this specification so it doesn't cost precision
+# on the preregistered H1-H4 tests.
 
 dvs <- c(
   "fed.action.tax.credits",
@@ -52,7 +93,6 @@ rhs <- paste(
   "trump.cue:libDem + climate.cue:libDem",
   "trump.cue:college + college:conRep + college:libDem",
   "trump.cue:college:conRep + trump.cue:college:libDem",
-  "age + male + white + inc",
   sep = " + "
 )
 
@@ -67,10 +107,7 @@ names(models) <- dv_labels[dvs]
 # --- 3. Regression table ------------------------------------------------------
 
 # Displayed coefficients are the cue main effects, identity main effects,
-# and the interaction terms that directly test H1-H4. Demographic controls
-# (age, male, white, inc) are estimated in every model but omitted from the
-# printed table (noted below it) to keep the table a readable width across
-# HTML, PDF, and DOCX.
+# and the interaction terms that directly test H1-H4.
 coef_map <- c(
   "trump.cue"                       = "Trump Cue",
   "climate.cue"                     = "Climate Cue",
@@ -91,7 +128,7 @@ coef_map <- c(
 
 gof_omit_pattern <- "IC$|Log.Lik|F$|RMSE|Adj"
 stars_map <- c("†" = .1, "*" = .05, "**" = .01, "***" = .001)
-table_notes <- "Survey-weighted OLS (svyglm). Reference categories: control condition, moderate/other political identity, no college degree. All models also control for age, gender, race, and income (omitted here for space)."
+table_notes <- "Survey-weighted OLS (svyglm). Reference categories: control condition, moderate/other political identity, no college degree."
 
 results_table <- modelsummary(
   models,
@@ -125,22 +162,13 @@ hyp_results <- lapply(models, function(m) {
 
 # --- 5. Predicted values for the IVs of interest -----------------------------
 # Model-predicted support (95% CIs) for the cue x political-identity and
-# cue x identity x college terms that test H1-H4. Demographic controls are
-# held at their survey-weighted means throughout.
+# cue x identity x college terms that test H1-H4.
 
 wtd_mean <- function(x) sum(x * d$weight) / sum(d$weight)
 
-controls_at_mean <- data.frame(
-  age   = wtd_mean(d$age),
-  male  = wtd_mean(d$male),
-  white = wtd_mean(d$white),
-  inc   = wtd_mean(d$inc)
-)
-
 predict_grid <- function(grid) {
-  nd <- merge(grid, controls_at_mean)
   out <- lapply(names(models), function(dv_label) {
-    p <- as.data.frame(predictions(models[[dv_label]], newdata = nd))
+    p <- as.data.frame(predictions(models[[dv_label]], newdata = grid))
     p$dv <- dv_label
     p
   })
@@ -210,3 +238,35 @@ fig_college <- ggplot(pred_college, aes(x = college_label, y = estimate, color =
   labs(x = NULL, y = "Predicted Support (1-5)", color = "Condition") +
   theme_bw() +
   theme(axis.text.x = element_text(angle = 40, hjust = 1), legend.position = "bottom")
+
+# --- 6. Exploratory model: climate cue x education --------------------------
+# Not preregistered. H3/H4 only hypothesized that education would moderate
+# the Trump cue's effect; this adds the parallel climate.cue:college terms
+# to check whether education also moderates the climate cue's effect. Fit as
+# a separate model (rather than added to `models` above) so it doesn't cost
+# precision on the preregistered H1-H4 tests.
+
+rhs_climate_college <- paste(rhs, "climate.cue:college + climate.cue:college:conRep + climate.cue:college:libDem", sep = " + ")
+
+fit_model_explore <- function(dv) {
+  f <- as.formula(paste(dv, "~", rhs_climate_college))
+  svyglm(f, design = design)
+}
+
+models_explore <- lapply(dvs, fit_model_explore)
+names(models_explore) <- dv_labels[dvs]
+
+coef_map_explore <- c(coef_map, c(
+  "climate.cue:college"        = "Climate x College",
+  "climate.cue:conRep:college" = "Climate x ConRep x College",
+  "climate.cue:libDem:college" = "Climate x LibDem x College"
+))
+
+results_table_explore <- modelsummary(
+  models_explore,
+  coef_map = coef_map_explore,
+  gof_omit = gof_omit_pattern,
+  stars = stars_map,
+  notes = "Survey-weighted OLS (svyglm). Exploratory model adding climate.cue:college and its interactions with conRep/libDem to the preregistered H1-H4 specification; not used for the preregistered hypothesis tests."
+) |>
+  style_tt(fontsize = 0.7)
