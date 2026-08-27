@@ -23,6 +23,44 @@ second term.
 
 ## Session History
 
+### Session 5 — 2026-08-27 (Literature integration from cue-energy, hypotheses intro, Discussion/Conclusion, citation fixes)
+
+- Pulled the "Under Review/cue-energy" manuscript's literature review (a
+  related project on the same survey/cues design) and integrated relevant
+  material into "Polarization on Energy Issues" and "Cues and Cue-Taking":
+  fixed a broken/unfinished paragraph and added source-specific polarization
+  content (fossil fuels vs. renewables vs. nuclear) and an elite-cues/
+  "Trump effect" paragraph. Per user request, reworded all borrowed passages
+  so phrasing doesn't closely track the cue-energy source text, while
+  keeping the same citations and claims.
+- Discovered that `export-cited-refs.R`'s pre-render step silently drops any
+  cited key not present in the master bib (`Manuscript-Files/refs.bib`),
+  which briefly broke 12 pre-existing citations (6 academic + 6 news items)
+  that were only in the local `references.bib`. Recovered full bibliographic
+  details for all 12 from the previously rendered `_output/cue-actions.html`
+  and reported them to the user to add to Zotero; user has since added all
+  12 to the master bib (final 2 — Carnes & Lupu, Zingher — landed under
+  different auto-generated keys, `carnesWhiteWorkingClass2021` and
+  `zingherTRENDSDiplomaDivide2022`; updated all in-text citations to match).
+  `export-cited-refs.R` now reports 48/48 cited keys resolved.
+- User hand-added a paragraph to the Introduction citing the general
+  cue-taking/heuristics literature and Trump's support among non-college
+  voters; filled in the three empty citation brackets using sources already
+  cited elsewhere in the paper for the same claims (Kam 2005; Schaffner &
+  Streb 2002; Mérola & Hitt 2016; Morgan & Lee 2018; Zingher 2022).
+- Drafted a hypotheses-introduction paragraph (before `## Hypotheses`)
+  synthesizing the partisan cue-taking and education/class-inflected-Trump-
+  support channels into the logic behind H1-H4.
+- Drafted the full "Discussion and Conclusion" section (previously empty):
+  walks through H1-H4 findings action-by-action, including the climate cue's
+  counterintuitive negative effect on Republican support for eliminating
+  wind/solar tax credits, ties the results back to the source-specific
+  polarization argument, notes limitations, and closes with a future-research
+  paragraph per the author's usual structure.
+- Filled in the Introduction's "Overall, I find that..." summary paragraph
+  to match the Results/Discussion findings.
+- Re-rendered HTML, PDF, and DOCX; all three build cleanly with 0 warnings.
+
 ### Session 4 — 2026-08-25 (Robustness check, descriptive stats, exploratory model, media-grounded intro)
 
 - Compared the primary H1-H4 model with and without demographic controls
