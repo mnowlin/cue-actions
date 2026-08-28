@@ -23,6 +23,54 @@ second term.
 
 ## Session History
 
+### Session 6 — 2026-08-28 (Difference-of-means table, education x beliefs interaction in Discussion, full proofreading pass, conference PDF)
+
+- Moved `tbl-results` (the main regression table) back out of the Appendix
+  and into the Results section, right after the paragraph that first cites
+  it. The Appendix now holds only `tbl-results-explore`.
+- Added a difference-of-means table (`means_table` in `manuscript-prep.R`,
+  new section 3b; `tbl-means` in the qmd): survey-weighted mean support for
+  each of the five actions by cue condition (control / Trump / climate), plus
+  the Trump- and climate-cue mean differences from control with design-based
+  tests. Estimated per DV via `svyglm(dv ~ trump.cue + climate.cue)` — the
+  intercept is the weighted control mean and the two slopes are the weighted
+  mean differences. Only the Trump cue's -0.18 drop on nuclear licensing is
+  significant (*p* < .05); every other condition difference is null.
+- Fact-checked the user's new Results paragraph on the education x political-
+  beliefs two-way interaction against the fitted models. The substantive
+  claims hold (college-educated conRep less supportive of cancel wind and
+  nuclear; college-educated libDem less supportive of tax credits, cancel
+  wind, and nuclear — all negative and significant), but flagged that the
+  cross-reference pointed at the wrong table (`@tbl-means` should be
+  `@tbl-results`; the user's interim `@tbl-tbl-results` typo was also fixed)
+  and that "(at *p*<0.10)" understates the conRep x college cancel-wind term,
+  which is *p* = .04. Left those two items for the user to adjust in prose.
+- Drafted a new Discussion paragraph (after the H3/H4 paragraph) on that
+  unanticipated interaction: a college degree is associated with *lower*
+  support for several actions among committed partisans on both sides but
+  *higher* support among moderates/others; framed as exploratory (not
+  preregistered, 3 of 5 actions). Added a matching sentence to the closing
+  future-research paragraph.
+- Corrected "ceiling effect" -> "floor effect" in the H2 Discussion
+  paragraph: the DV is *support*, and liberal Democrats' support sits near
+  the bottom of the 1-5 scale (1.4-1.7 in the control condition), so there is
+  little room for a cue to push it lower.
+- Ran a full typo / spelling / grammar pass over the manuscript at the user's
+  request (all fixes except the line-168 cross-reference and p-value items
+  above, which are the user's prose to adjust): ~20 fixes, including a broken
+  word ("example.eEarly"), a duplicated phrase, several subject-verb
+  disagreements ("@tbl-results show", "the main effect ... were", "views ...
+  has grown"), two comma splices / run-ons (the Bergquist sentence and the
+  floor-effect sentence), a stray period before a citation, "than those
+  without a degree" -> "with a degree", hyphenation ("working-class",
+  "college-educated"), "Republican party" -> "Party", "pre-registered" ->
+  "preregistered", and shifting the abstract's stale pre-registration future
+  tense ("I will survey", "will be asked") to past. Left "in the U.S."
+  untouched inside the verbatim survey question wording.
+- Re-rendered HTML, PDF, and DOCX; all three build cleanly.
+- Staged `_output/nowlinAPSA2026.pdf`, a copy of the rendered PDF the user is
+  circulating for APSA 2026, to be tracked alongside the standard outputs.
+
 ### Session 5 — 2026-08-27 (Literature integration from cue-energy, hypotheses intro, Discussion/Conclusion, citation fixes)
 
 - Pulled the "Under Review/cue-energy" manuscript's literature review (a

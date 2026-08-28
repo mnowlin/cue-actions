@@ -139,6 +139,46 @@ results_table <- modelsummary(
 ) |>
   style_tt(fontsize = 0.7)
 
+# --- 3b. Difference-of-means table (cue condition) -------------------------
+# Survey-weighted mean support for each action by cue condition, plus the
+# Trump- and climate-cue differences from control. Estimated per DV with
+# svyglm(dv ~ trump.cue + climate.cue): the intercept is the weighted control
+# mean, and the two slopes are the weighted mean differences from control,
+# with design-based SEs and tests.
+
+star <- function(p) {
+  as.character(cut(p, breaks = c(-Inf, .001, .01, .05, .1, Inf),
+                   labels = c("***", "**", "*", "†", "")))
+}
+
+means_row <- function(dv) {
+  m <- svyglm(as.formula(paste(dv, "~ trump.cue + climate.cue")), design = design)
+  s <- summary(m)$coefficients
+  p_col  <- grep("^Pr", colnames(s))
+  ctrl   <- s["(Intercept)", "Estimate"]
+  t_diff <- s["trump.cue", "Estimate"]
+  c_diff <- s["climate.cue", "Estimate"]
+  data.frame(
+    Action              = dv_labels[[dv]],
+    Control             = sprintf("%.2f", ctrl),
+    `Trump Cue`         = sprintf("%.2f", ctrl + t_diff),
+    `Climate Cue`       = sprintf("%.2f", ctrl + c_diff),
+    `Trump - Control`   = paste0(sprintf("%+.2f", t_diff), star(s["trump.cue", p_col])),
+    `Climate - Control` = paste0(sprintf("%+.2f", c_diff), star(s["climate.cue", p_col])),
+    check.names = FALSE
+  )
+}
+
+means_table <- lapply(dvs, means_row) |>
+  bind_rows() |>
+  tt(notes = paste(
+    "Survey-weighted mean support (1-5) by cue condition, with mean differences",
+    "from the control condition. Differences and tests from",
+    "svyglm(support ~ trump.cue + climate.cue).",
+    "† p<0.10, * p<0.05, ** p<0.01, *** p<0.001."
+  )) |>
+  style_tt(fontsize = 0.7)
+
 # --- 4. Helper for in-text/bullet interpretation of hypothesis terms --------
 
 get_term <- function(model, term) {

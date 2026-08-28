@@ -9,7 +9,9 @@ on energy during his second term.
 ```
 cue-actions.qmd                      Manuscript source (renders to HTML, PDF, DOCX)
 _quarto.yaml                         Quarto project config
-_output/                             Rendered HTML/PDF/DOCX (tracked in git)
+_output/                             Rendered manuscript (tracked in git)
+  cue-actions.{html,pdf,docx}        Standard rendered outputs
+  nowlinAPSA2026.pdf                 PDF copy circulated for APSA 2026
 custom-reference-doc.docx            Word reference template used for the DOCX output
 LOG.md                               Running session log (newest entry first)
 scripts/
