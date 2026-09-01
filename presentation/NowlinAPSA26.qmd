@@ -1,0 +1,332 @@
+---
+title: "Partisan vs Climate Cues and Public Opinion about Trump's Actions on Energy"
+subtitle: "American Political Science Association Conference, September 2026"
+title-slide-attributes:
+  data-background-color: "#0064B1"
+author:
+  - name: Matthew C. Nowlin
+    affiliation:
+      - Associate Professor
+      - Department of Political Science
+      - University of Texas at Arlington
+bibliography: /Users/matthewnowlin/Library/CloudStorage/OneDrive-UTArlington/01-RESEARCH/01-in-progress/cue-actions/references.bib
+csl: /Users/matthewnowlin/Library/CloudStorage/OneDrive-UTArlington/01-RESEARCH/01-in-progress/cue-actions/american-political-science-association.csl
+fig-cap-location: top
+fontfamily: ebgaramond
+link-bibliography: false
+format:
+  revealjs:
+    theme: [pp.scss]
+    logo: "UTAPoliticalScience.png"
+    incremental: true
+    include-in-header:
+      text: |
+        <style>
+          #title-slide .title {
+            font-size: 2em;
+            color: white;
+          }
+          #title-slide .subtitle {
+            font-style: italic;
+          }
+          .reveal:has(#title-slide.present) .slide-logo {
+            display: none;
+          }
+        </style>
+---
+
+
+
+
+```{r setup, include=FALSE, message=FALSE}
+knitr::opts_knit$set(root.dir = normalizePath(".."))
+```
+
+```{r}
+#| echo: false
+#| include: false
+#| warning: false
+#| message: false
+
+## loads data, builds the survey design, fits the H1-H4 models, and
+## builds the tables/figures used below
+source("scripts/manuscript-prep.R")
+```
+
+
+## Motivation
+
+**_What shapes public support for President Trump's actions on energy_?**
+
+* The second Trump administration has moved aggressively to promote fossil fuels and sideline renewable sources
+
+* Historically, energy opinion was about cost and availability, not partisanship [@ansolabehereCheapCleanHow2016]
+
+* Energy has become more polarized in recent years, likely through its connection to climate change
+
+* Trump's actions may polarize opinion further &mdash; but through **Trump himself**, or through **climate change**?
+
+## Trump's Actions on Energy
+
+In the first year of his second term, the administration:
+
+* Limited the eligibility of wind and solar projects for federal tax credits [@springTrumpAdministrationLimits2025]
+
+* Required coal plants set to retire to remain open [@thakoreTrumpAdministrationOrders2025]
+
+* Opened 13.1 million acres of federal land for coal leasing [@InteriorUnleashesAmerican2025]
+
+* Cancelled a nearly complete offshore wind project [@wasserTrumpAdministrationPauses2025]
+
+* Shortened the licensing timeline for new nuclear power plants [@usdepartmentofenergy9KeyTakeaways2025; @TrumpsLicensingGoals2025]
+
+## Polarization on Energy Is Uneven
+
+Baseline partisan polarization differs across energy sources
+
+* **Fossil fuels (coal)**: the deepest partisan split of any source [@hartPoliticalPolarizationSupport2021]
+
+* **Wind and solar**: majorities across parties favor expansion; partisans disagree over *how much*, not *whether* [@bergquistEnergyPolicyPublic2020; @hamiltonChangeWindUS2018]
+
+* **Nuclear**: modestly more support on the right, but no sharp split [@yeoPartisanAmplificationRisk2014; @mcbethPoliticalIdeologyNuclear2023a]
+
+* Republicans and Democrats also support renewables for *different reasons* &mdash; costs and energy security vs. climate change [@gustafsonRepublicansDemocratsDiffer2020]
+
+## Cues and Cue-Taking
+
+* Partisan cues are a heuristic: citizens infer their own position from the position of their party's elites [@kamWhoToesParty2005; @schaffnerPartisanHeuristicLowInformation2002]
+
+* Best understood through motivated reasoning &mdash; processing information to protect prior partisan commitments [@taberMotivatedSkepticismEvaluation2006; @druckmanHowElitePartisan2013]
+
+* On energy and climate, attaching a climate frame or a Democratic-source cue is often enough to depress Republican support [@feldmanClimateChangePolarizing2018; @merkleyPartyCuesNews2021]
+
+## A Trump Cue Is Distinct
+
+* Individual elites, not parties in the abstract, tend to carry the most weight [@nicholsonPolarizingCues2012; @brulleShiftingPublicOpinion2012]
+
+* Trump specifically has moved opinion on immigration and trade &mdash; a documented "Trump effect" [@taylorTrumpEffectImmigration2026; @essigTrumpEffectPolitical2021]
+
+* His administration has taken concrete steps to expand fossil fuels and curb renewables [@gerrardTrumpsMultiProngedAttack2025], so the same dynamic is likely to carry over to energy
+
+* **Channel 1**: a Trump cue activates expressive, cue-receptive partisanship; a climate cue taps the substantive climate concern that already divides the parties
+
+## Does Education Matter?
+
+* Low-information account: less-educated citizens rely on party cues the most [@kamWhoToesParty2005; @merolaNumeracyPersuasiveEffect2016]
+
+* But education can also enable *more effective* motivated reasoning [@kahanIdeologyMotivatedReasoning2013; @bakkerUnderstandingPartisanCue2019] and has *amplified* climate polarization among conservatives [@hamiltonEducationPoliticsOpinions2011]
+
+* Trump's strength among non-college white voters &mdash; the "diploma divide" [@zingherTRENDSDiplomaDivide2022; @morganTrumpVotersWhite2018]
+
+* **Channel 2**: if the Trump cue draws on identity-based appeal, its effects should concentrate among non-college partisans
+
+## Hypotheses
+
+Two channels: partisan cue-taking and education
+
+H1: _Conservative Republicans who receive the Trump or climate cue will be **more** supportive of Trump's actions than others_
+
+H2: _Liberal Democrats who receive the Trump or climate cue will be **less** supportive than others_
+
+H3: _Conservative Republicans **without a college degree** who receive the Trump cue will be more supportive than others_
+
+H4: _Liberal Democrats **without a college degree** who receive the Trump cue will be less supportive than others_
+
+::: {.notes}
+Preregistered: https://osf.io/zkhqp/overview
+:::
+
+
+# Data and Analysis {.section-background}
+
+## Survey
+
+* Quota-based sample of US residents recruited through *Cloud Research*
+  * Quotas from US Census data for age, gender, and race
+
+* Internet-based, administered in QuestionPro
+
+* Fielded April 10&ndash;15, 2026
+
+* *N* = `r n_total`
+
+* Iterative raking (`survey`, `anesrake`) to the 2023 ACS on age, race, gender, and education; Pew NPORS 2025 for party affiliation
+
+## Experimental Design
+
+Respondents randomly assigned to one of three conditions:
+
+* **Trump cue** (*n* = `r n_trump`) &mdash; actions attributed to the *Trump Administration*
+
+* **Climate cue** (*n* = `r n_climate`) &mdash; actions attributed to the *federal government*, plus a statement that scientists are concerned the actions could make climate change worse
+
+* **Control** (*n* = `r n_control`) &mdash; actions attributed to the *federal government*, no cue
+
+## Question Wording
+
+Recently, the [*Trump Administration* / *Federal government*] took several actions to shape electricity generation in the U.S.
+
+**Climate cue**: *Scientists are concerned that the actions associated with coal, wind, and solar energy will make climate change worse.*
+
+Using a scale of 1 to 5, where 1 means strongly oppose and 5 means strongly support, how do you feel about the following actions of the [*Trump Administration* / *Federal government*]? *[items randomized]*
+
+## Measures
+
+* **Dependent variables**: support (1&ndash;5) for each of the five actions
+  * Tax credits, coal open, coal leasing, cancel wind, nuclear licensing
+
+* **Political beliefs**: conservative Republican, liberal Democrat
+  * Moderate/other (moderate independents, cross-pressured partisans) is the excluded referent
+
+* **College**: 1 = completed a college degree, 0 = did not
+
+
+## Model
+
+* Survey-weighted OLS (`svyglm`), one model per action
+
+* Cue main effects, political beliefs, and college
+
+* Interactions:
+  * cue &times; political beliefs &rarr; H1, H2
+  * Trump cue &times; beliefs &times; college &rarr; H3, H4
+
+* Reference categories: control condition, moderate/other identity, no college degree
+
+
+# Results {.section-background}
+
+## Predicted Support by Cue and Political Beliefs
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 11
+#| fig-height: 4.5
+fig_identity
+```
+
+## Predicted Support by Cue and Political Beliefs
+
+**Conservative Republicans**
+
+* Trump cue significantly *increased* support for opening federal lands to coal leasing and for shortening nuclear licensing
+  * Increases for keeping coal plants open and cancelling the offshore wind project at *p* < 0.10
+
+* Trump cue did **not** move support for eliminating wind and solar tax credits
+
+* Climate cue *decreased* support for eliminating tax credits 
+
+## Predicted Support by Cue and Political Beliefs
+
+**Liberal Democrats**
+
+* Largely unresponsive to both the Trump cue and the climate cue
+
+* Reduction in support for eliminating tax credits under the climate cue (*p* < 0.10)
+
+* Likely a floor effect &mdash; opposition to coal leasing and tax credit elimination was already near the bottom of the scale in the control condition
+
+## Predicted Support by Trump Cue and College Degree
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-width: 11
+#| fig-height: 6
+fig_college
+```
+
+## Education Did Not Moderate the Cues
+
+* No differences across the three-way interaction of Trump cue &times; college &times; political beliefs
+
+* Non-college respondents were **no more** responsive to the Trump cue than college respondents &mdash; for both Republicans and Democrats (H3, H4 unsupported)
+
+* But education *independently* conditions support among committed partisans:
+  * College-educated conservative Republicans **and** liberal Democrats were *less* supportive of cancelling wind projects and shortening nuclear licensing than their non-college co-partisans
+  * The opposite pattern holds among moderate/other respondents
+
+## Discussion
+
+::: {.incremental}
+* The **Trump cue**, not the climate cue, moved opinion &mdash; and only among conservative Republicans (H1 partly supported)
+
+* No Trump cue effect on eliminating tax credits &mdash; the only action that *cuts* an existing renewable program rather than expanding or maintaining one
+
+* The **climate cue** did little, except to *decrease* Republican support for eliminating tax credits
+
+* **Liberal Democrats** were unresponsive to both cues (H2 unsupported)
+
+* **Education** did not moderate cue effects (H3, H4 unsupported), but independently lowers support among committed partisans on both sides
+
+* Trump's energy actions are more likely to polarize opinion through their association with **Trump himself** than through their connection to **climate change**
+:::
+
+# Thank You! {.section-background}
+
+# Appendix {.section-background}
+
+## Descriptive Statistics
+
+```{r}
+#| echo: false
+desc_table
+```
+
+* Support for each action hovers near the midpoint of the 1&ndash;5 scale
+  * Lowest: cancelling nearly complete wind projects (`r round(wtd_mean(d$fed.action.cancel.wind), 2)`)
+  * Highest: shortening nuclear licensing (`r round(wtd_mean(d$fed.action.nuclear.licensing), 2)`)
+
+## Difference in Means by Cue Condition
+
+```{r}
+#| echo: false
+means_table
+```
+
+* The only significant raw difference: support for the nuclear regulatory changes is *lower* in the Trump condition than in the control
+
+## Weighted OLS Models: Main Effects
+
+```{r}
+#| echo: false
+modelsummary(
+  models,
+  coef_map = coef_map[c("trump.cue", "climate.cue", "conRep",
+                        "libDem", "college", "(Intercept)")],
+  gof_omit = gof_omit_pattern,
+  stars = stars_map
+) |> tinytable::style_tt(fontsize = 0.7)
+```
+
+::: {.notes}
+
+Reference categories: control condition, moderate/other identity, no college degree
+
+:::
+
+## Weighted OLS Models: Interactions
+
+```{r}
+#| echo: false
+modelsummary(
+  models,
+  coef_map = coef_map[c("trump.cue:conRep", "climate.cue:conRep",
+                        "trump.cue:libDem", "climate.cue:libDem",
+                        "trump.cue:college", "conRep:college", "libDem:college",
+                        "trump.cue:conRep:college", "trump.cue:libDem:college")],
+  gof_omit = gof_omit_pattern,
+  stars = stars_map
+) |> tinytable::style_tt(fontsize = 0.55)
+```
+
+
+::: {.notes}
+
+`trump.cue` &times; identity tests H1/H2; `trump.cue` &times; identity &times; `college` tests H3/H4
+
+:::
+
+
+## References

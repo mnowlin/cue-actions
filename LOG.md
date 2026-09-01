@@ -23,6 +23,40 @@ second term.
 
 ## Session History
 
+### Session 7 — 2026-09-01 (APSA 2026 conference presentation)
+
+- Built `presentation/NowlinAPSA26.qmd`, a Quarto reveal.js slide deck for
+  the APSA 2026 talk, modeled on a prior conference presentation (a
+  property-buyout paper) the user placed in the file as a template. Reuses
+  that deck's theme assets: `presentation/pp.scss` (UTA blue `#0064B1`,
+  Abhaya Libre / Jost fonts, `.section-background` dividers) and
+  `presentation/UTAPoliticalScience.png` logo.
+- Deck flow mirrors the manuscript: Motivation -> Trump's five energy actions
+  -> uneven baseline polarization -> cues/cue-taking + the education channel
+  -> H1-H4 -> Data and Analysis (survey, experimental design, question
+  wording, measures, model) -> Results (`fig_identity`, `fig_college`, plus
+  interpretation slides) -> Discussion -> Appendix (`desc_table`,
+  `means_table`, split regression table) -> References.
+- Tables and figures are pulled live from `scripts/manuscript-prep.R`, which
+  the setup chunk sources after setting `knitr::opts_knit$root.dir` to the
+  project root (same pattern as the template deck). Slides call the existing
+  objects (`desc_table`, `means_table`, `fig_identity`, `fig_college`) and
+  inline values (`n_total`, `n_trump`, `n_climate`, `n_control`, `wtd_mean()`).
+- Split the wide five-model `results_table` into two Appendix slides — "Main
+  Effects" (cue / identity / college + intercept, `style_tt(fontsize = 0.7)`)
+  and "Interactions" (the nine interaction terms, `fontsize = 0.55`) — each
+  rebuilt via `modelsummary(models, coef_map = coef_map[...])` so they stay
+  consistent with the manuscript table.
+- Title-slide tweaks per user requests: removed the logo from the title
+  slide only (CSS `.reveal:has(#title-slide.present) .slide-logo`, kept on
+  content slides); added the venue as an italic white `subtitle`
+  ("American Political Science Association Conference, September 2026") —
+  used `subtitle` rather than `date`, since Quarto date-parses the `date`
+  field and collapsed the string to an ISO date; added "Associate Professor"
+  above the department in the affiliation block.
+- Renders cleanly to `presentation/NowlinAPSA26.html`; user also exported a
+  PDF of the slides.
+
 ### Session 6 — 2026-08-28 (Difference-of-means table, education x beliefs interaction in Discussion, full proofreading pass, conference PDF)
 
 - Moved `tbl-results` (the main regression table) back out of the Appendix

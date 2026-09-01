@@ -18,6 +18,12 @@ scripts/
   manuscript-prep.R                  Sourced by the qmd: loads data and prepares the
                                        analysis objects, tables, and figures
   export-cited-refs.R                Pre-render step: trims the master .bib to cited keys
+presentation/                        APSA 2026 slide deck (Quarto reveal.js)
+  NowlinAPSA26.qmd                   Slide source; sources scripts/manuscript-prep.R
+                                       for its tables and figures
+  NowlinAPSA26.pdf                   Exported slides (the rendered .html and its
+                                       NowlinAPSA26_files/ runtime are git-ignored)
+  pp.scss, UTAPoliticalScience.png   Deck theme and logo
 data/                                Survey/analysis data (NOT in git -- see below)
   cueActionsDataWeighted.csv         Survey data with post-stratification weights
 literature/                          Background literature (NOT in git -- local only)

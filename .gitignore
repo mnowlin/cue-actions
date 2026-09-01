@@ -13,3 +13,6 @@ nowlin-style-profile.md
 /.quarto/
 **/*.quarto_ipynb
 *.aux
+
+presentation/NowlinAPSA26.html
+presentation/NowlinAPSA26_files/
