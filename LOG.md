@@ -23,6 +23,53 @@ second term.
 
 ## Session History
 
+### Session 8 — 2026-09-14 (Education/partisan-cue literature search, theory + Discussion additions, abstract update)
+
+- Used Consensus to search for research on education and partisan cue-taking,
+  specifically to contextualize the paper's null H3/H4 finding (education did
+  not moderate the Trump cue's effect) and the unexpected two-way education x
+  political-beliefs interaction. Surfaced Ehret, Sparks, and Sherman (2017,
+  *Environmental Politics*) on the ideological-consistency model, Vrânceanu
+  (2022, *West European Politics*) on education moderating responses to
+  incongruent vs. congruent cues, and Houston and Barone (2026, *Education
+  Finance and Policy*) on partisan-official cues chiefly polarizing rather
+  than persuading.
+- Integrated these into `cue-actions.qmd`:
+  - **Cues and Cue-Taking** theory section: added the ideological-consistency
+    and congruent/incongruent-cue nuance to the paragraph on education and
+    cue receptivity.
+  - **Discussion**, H3/H4 paragraph: added the congruent-cue explanation
+    (Vrânceanu) and the polarize-not-persuade pattern (Houston and Barone) as
+    candidate explanations for the null education-moderation result.
+  - **Discussion**, education x political-beliefs paragraph: added a new
+    paragraph noting the finding fits the ideological-consistency model for
+    Democrats but runs opposite to it for Republicans, tying to the paper's
+    broader partisan-asymmetry theme.
+- Bibliography: `ehretSupportEnvironmentalProtection2017` already existed in
+  the master bib (`01-RESEARCH/Manuscript-Files/refs.bib`). Added
+  `houstonEngagementHighProfile2026` and `vranceanuCrossPressuresAffect2022`
+  to the master bib manually (full metadata, DOIs verified via web search),
+  flagged with a comment that they are not yet real Zotero items. **Follow-up
+  for the user**: add these two papers to Zotero via "Add Item(s) by
+  Identifier" (DOIs `10.1162/edfp_a_00449` and
+  `10.1080/01402382.2021.1975447`) so Better BibTeX's auto-export doesn't
+  drop them on its next full re-export; Zotero's local connector HTTP server
+  was not reachable (port 23119 refused), so this could not be done
+  programmatically.
+- Rendered HTML, PDF, and DOCX to confirm both new citations resolve cleanly
+  with no citeproc warnings.
+- Updated the abstract to state the findings (Trump cue increased support
+  among conservative Republicans; climate cue's only effect was reducing
+  Republican support for eliminating renewable tax credits; Democrats
+  unresponsive; education did not moderate either cue), rather than only
+  describing the design.
+- Staged `presentation/NowlinAPSA26.qmd` (modified) and
+  `presentation/NowlinAPSA2026.pdf` (new) per user request.
+- Restored `.gitignore`, `CLAUDE.md`, `LOG.md`, `README.md`, `_quarto.yaml`,
+  and `custom-reference-doc.docx` from spurious `755` file-mode changes
+  (likely a OneDrive sync artifact) back to `644` so they wouldn't show as
+  modified in git with no real content change.
+
 ### Session 7 — 2026-09-01 (APSA 2026 conference presentation)
 
 - Built `presentation/NowlinAPSA26.qmd`, a Quarto reveal.js slide deck for

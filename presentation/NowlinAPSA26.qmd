@@ -60,11 +60,11 @@ source("scripts/manuscript-prep.R")
 
 * The second Trump administration has moved aggressively to promote fossil fuels and sideline renewable sources
 
-* Historically, energy opinion was about cost and availability, not partisanship [@ansolabehereCheapCleanHow2016]
+* Historically, energy opinion was about cost and availability [@ansolabehereCheapCleanHow2016]
 
 * Energy has become more polarized in recent years, likely through its connection to climate change
 
-* Trump's actions may polarize opinion further &mdash; but through **Trump himself**, or through **climate change**?
+* Support for Trump's actions is likely polarized, but through **Trump**, or **climate change**?
 
 ## Trump's Actions on Energy
 
@@ -82,33 +82,33 @@ In the first year of his second term, the administration:
 
 ## Polarization on Energy Is Uneven
 
-Baseline partisan polarization differs across energy sources
+Partisan polarization differs across energy sources
 
-* **Fossil fuels (coal)**: the deepest partisan split of any source [@hartPoliticalPolarizationSupport2021]
+* **Fossil fuels (coal)**: the largest partisan differences of any source [@hartPoliticalPolarizationSupport2021]
 
 * **Wind and solar**: majorities across parties favor expansion; partisans disagree over *how much*, not *whether* [@bergquistEnergyPolicyPublic2020; @hamiltonChangeWindUS2018]
 
-* **Nuclear**: modestly more support on the right, but no sharp split [@yeoPartisanAmplificationRisk2014; @mcbethPoliticalIdeologyNuclear2023a]
+* **Nuclear**: somewhat more support on the right, but no sharp split [@yeoPartisanAmplificationRisk2014; @mcbethPoliticalIdeologyNuclear2023a]
 
-* Republicans and Democrats also support renewables for *different reasons* &mdash; costs and energy security vs. climate change [@gustafsonRepublicansDemocratsDiffer2020]
+* Republicans and Democrats also support renewables for *different reasons*; costs and energy security vs. climate change [@gustafsonRepublicansDemocratsDiffer2020]
 
 ## Cues and Cue-Taking
 
-* Partisan cues are a heuristic: citizens infer their own position from the position of their party's elites [@kamWhoToesParty2005; @schaffnerPartisanHeuristicLowInformation2002]
+* Partisan cues are a heuristic: mass public infers their own position from the position of their party's elites [@kamWhoToesParty2005; @schaffnerPartisanHeuristicLowInformation2002]
 
 * Best understood through motivated reasoning &mdash; processing information to protect prior partisan commitments [@taberMotivatedSkepticismEvaluation2006; @druckmanHowElitePartisan2013]
 
-* On energy and climate, attaching a climate frame or a Democratic-source cue is often enough to depress Republican support [@feldmanClimateChangePolarizing2018; @merkleyPartyCuesNews2021]
+* On energy and climate, attaching a climate frame or a Democratic-source cue is often enough to decrease Republican support [@feldmanClimateChangePolarizing2018; @merkleyPartyCuesNews2021]
 
 ## A Trump Cue Is Distinct
 
 * Individual elites, not parties in the abstract, tend to carry the most weight [@nicholsonPolarizingCues2012; @brulleShiftingPublicOpinion2012]
 
-* Trump specifically has moved opinion on immigration and trade &mdash; a documented "Trump effect" [@taylorTrumpEffectImmigration2026; @essigTrumpEffectPolitical2021]
+* A "Trump effect": Trump has moved opinion on immigration and trade [@taylorTrumpEffectImmigration2026; @essigTrumpEffectPolitical2021]
 
-* His administration has taken concrete steps to expand fossil fuels and curb renewables [@gerrardTrumpsMultiProngedAttack2025], so the same dynamic is likely to carry over to energy
+* His administration has taken concrete steps to expand fossil fuels and curb renewables [@gerrardTrumpsMultiProngedAttack2025], so the same dynamic may carry over to energy
 
-* **Channel 1**: a Trump cue activates expressive, cue-receptive partisanship; a climate cue taps the substantive climate concern that already divides the parties
+* **Cues**: _a Trump cue activates expressive, cue-receptive partisanship; a climate cue taps the substantive climate concern that already divides the parties_
 
 ## Does Education Matter?
 
@@ -118,11 +118,11 @@ Baseline partisan polarization differs across energy sources
 
 * Trump's strength among non-college white voters &mdash; the "diploma divide" [@zingherTRENDSDiplomaDivide2022; @morganTrumpVotersWhite2018]
 
-* **Channel 2**: if the Trump cue draws on identity-based appeal, its effects should concentrate among non-college partisans
+* **Education**: _if the Trump cue draws on identity-based appeal, its effects should concentrate among non-college partisans_
 
 ## Hypotheses
 
-Two channels: partisan cue-taking and education
+Partisan cue-taking and education
 
 H1: _Conservative Republicans who receive the Trump or climate cue will be **more** supportive of Trump's actions than others_
 
@@ -160,7 +160,7 @@ Respondents randomly assigned to one of three conditions:
 
 * **Climate cue** (*n* = `r n_climate`) &mdash; actions attributed to the *federal government*, plus a statement that scientists are concerned the actions could make climate change worse
 
-* **Control** (*n* = `r n_control`) &mdash; actions attributed to the *federal government*, no cue
+* **Control** (*n* = `r n_control`) &mdash; actions attributed to the *federal government*, no mention of climate change
 
 ## Question Wording
 
@@ -225,7 +225,7 @@ fig_identity
 
 * Reduction in support for eliminating tax credits under the climate cue (*p* < 0.10)
 
-* Likely a floor effect &mdash; opposition to coal leasing and tax credit elimination was already near the bottom of the scale in the control condition
+* Likely a floor effect as opposition to coal leasing and tax credit elimination was already near the bottom of the scale in the control condition
 
 ## Predicted Support by Trump Cue and College Degree
 
@@ -245,7 +245,6 @@ fig_college
 
 * But education *independently* conditions support among committed partisans:
   * College-educated conservative Republicans **and** liberal Democrats were *less* supportive of cancelling wind projects and shortening nuclear licensing than their non-college co-partisans
-  * The opposite pattern holds among moderate/other respondents
 
 ## Discussion
 
