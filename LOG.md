@@ -23,6 +23,28 @@ second term.
 
 ## Session History
 
+### Session 9 — 2026-09-15 (Proofreading pass, citation-key fix, CLAUDE.md update)
+
+- User made a manual proofreading/wordsmithing pass over `cue-actions.qmd`
+  (Introduction, Polarization on Energy Issues, Cues and Cue-Taking,
+  Hypotheses, and Data/Results sections): tightened phrasing throughout,
+  dropped the now-outdated "prepared for submission to APSA" line from the
+  abstract block, added `@benegalCostSensitivityPartisan2024` and
+  `@cohenPartyPolicyDominating2003` as supporting citations, and clarified
+  how the political-beliefs measure was constructed (from a 7-point ideology
+  scale plus party identification).
+- Fixed a citation-key mismatch flagged as a follow-up in Session 8: the two
+  papers added to Zotero since then resolved to slightly different
+  Better-BibTeX keys than what was hand-typed in the qmd
+  (`houstonEngagementHighProfile2026` → `houstonHowEngagementHighProfile2026`;
+  `vranceanuCrossPressuresAffect2022` → `vranceanuHowCrosspressuresAffect2022`).
+  Updated both in-text citations to match the master bib; re-rendered and
+  confirmed no citeproc warnings remain.
+- Re-rendered HTML, PDF, and DOCX outputs to reflect the prose changes;
+  `_freeze/` cache updated accordingly.
+- Added a pointer to `/paperpush-plugin:paperpush-prepare-submission` in
+  `CLAUDE.md` for use when this manuscript is ready to submit.
+
 ### Session 8 — 2026-09-14 (Education/partisan-cue literature search, theory + Discussion additions, abstract update)
 
 - Used Consensus to search for research on education and partisan cue-taking,

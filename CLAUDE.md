@@ -5,6 +5,8 @@ This is an academic article about partisan and climate cues on support for sever
 
 I use a .qmd file for the manuscript and all text and code needs to produce an html, pdf, and docx document. The `export-cited-refs.R` file is code to pull cited references from a master bibliography to create a project-specific bibliography   
 
+Use paperpush to help when submitting a manuscript: /paperpush-plugin:paperpush-prepare-submission
+
 ## Set up project 
 When I say “set-up [project name]”:
 1. Copy all contents from the project-files directory here: /Users/matthewnowlin/Library/CloudStorage/OneDrive-UTArlington/01-RESEARCH/project-files.
