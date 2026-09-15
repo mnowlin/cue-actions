@@ -16,7 +16,7 @@ When I say “set-up [project name]”:
 5. Update the README file for this project. The included file is from another project and acts as a template
 6. Check the git status of the directory. It no git exists, create one and ask me if it should be public or private
 7. Add the literature and data directories to gitignore
-8. Create a manuscript-prep.R file in the scripts directory. This will the code file for the analysis presented in the manuscript. Tables and figures will used code blocks in the manuscript file. Some inline R code will also be used
+8. Create an analysis.R file in the scripts directory. This will the code file for the analysis presented in the manuscript. Tables and figures will used code blocks in the manuscript file. Some inline R code will also be used
 9. Update the log file. The included file is from another project and acts as a template
 10. Update the export-cited-refs file with the correct qmd file name for this project
 

@@ -14,7 +14,7 @@ second term.
 
 **Key files:**
 - `cue-actions.qmd` — main manuscript (renders to HTML, PDF, DOCX)
-- `scripts/manuscript-prep.R` — survey design, five `svyglm` models (H1-H4), regression table, and predicted-value figures sourced by the manuscript
+- `scripts/analysis.R` — survey design, five `svyglm` models (H1-H4), regression table, and predicted-value figures sourced by the manuscript
 - `scripts/export-cited-refs.R` — pre-render step that trims the master `.bib` to cited keys
 - `data/cueActionsDataWeighted.csv` — weighted survey data (N = 3,113)
 - `README.md` — project structure and reproduction instructions
@@ -22,6 +22,14 @@ second term.
 ---
 
 ## Session History
+
+### Session 10 — 2026-09-15 (Rename manuscript-prep.R to analysis.R)
+
+- Renamed `scripts/manuscript-prep.R` to `scripts/analysis.R` (`git mv`) and
+  updated the `source()` calls in `cue-actions.qmd` and
+  `presentation/NowlinAPSA26.qmd`, plus references in `README.md` and
+  `CLAUDE.md`. Left past `LOG.md` entries under the old filename as
+  historical record.
 
 ### Session 9 — 2026-09-15 (Proofreading pass, citation-key fix, CLAUDE.md update)
 

@@ -15,11 +15,11 @@ _output/                             Rendered manuscript (tracked in git)
 custom-reference-doc.docx            Word reference template used for the DOCX output
 LOG.md                               Running session log (newest entry first)
 scripts/
-  manuscript-prep.R                  Sourced by the qmd: loads data and prepares the
+  analysis.R                         Sourced by the qmd: loads data and prepares the
                                        analysis objects, tables, and figures
   export-cited-refs.R                Pre-render step: trims the master .bib to cited keys
 presentation/                        APSA 2026 slide deck (Quarto reveal.js)
-  NowlinAPSA26.qmd                   Slide source; sources scripts/manuscript-prep.R
+  NowlinAPSA26.qmd                   Slide source; sources scripts/analysis.R
                                        for its tables and figures
   NowlinAPSA26.pdf                   Exported slides (the rendered .html and its
                                        NowlinAPSA26_files/ runtime are git-ignored)
@@ -35,7 +35,7 @@ Requires R with: `survey`, `dplyr`, `broom`, `modelsummary`, `tinytable`, `margi
 
 - **Manuscript:** `quarto render` → outputs to `_output/` (HTML, PDF, and DOCX;
   the DOCX uses `custom-reference-doc.docx`)
-- **Models only:** `Rscript scripts/manuscript-prep.R` builds the analysis
+- **Models only:** `Rscript scripts/analysis.R` builds the analysis
   objects without rendering the manuscript.
 
 ## Data
@@ -60,7 +60,7 @@ The `data/` folder is **not tracked in git**. Restore it before rendering:
 - `_output/` **is tracked in git** (unlike most build artifacts) so the
   rendered manuscript is available without re-running R/Quarto. Re-render
   (`quarto render`) after any change to `cue-actions.qmd` or
-  `scripts/manuscript-prep.R` and commit the updated files in `_output/`
+  `scripts/analysis.R` and commit the updated files in `_output/`
   alongside the source change.
 - Quarto's freeze cache (`_freeze/`) is enabled (`execute: freeze: auto` in
   `_quarto.yaml`), so code chunks are only re-executed when the qmd or its

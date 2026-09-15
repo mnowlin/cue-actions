@@ -50,7 +50,7 @@ knitr::opts_knit$set(root.dir = normalizePath(".."))
 
 ## loads data, builds the survey design, fits the H1-H4 models, and
 ## builds the tables/figures used below
-source("scripts/manuscript-prep.R")
+source("scripts/analysis.R")
 ```
 
 
