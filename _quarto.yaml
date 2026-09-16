@@ -5,6 +5,7 @@ project:
   output-dir: _output
   render:
     - cue-actions.qmd
+    - cue-actions-supplemental.qmd
 
 bibliography: references.bib
 csl: american-political-science-association.csl

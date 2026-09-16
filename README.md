@@ -8,15 +8,21 @@ on energy during his second term.
 
 ```
 cue-actions.qmd                      Manuscript source (renders to HTML, PDF, DOCX)
+cue-actions-supplemental.qmd         Supplemental materials source (renders to HTML, PDF, DOCX):
+                                       robustness checks and the exploratory climate x education model
 _quarto.yaml                         Quarto project config
 _output/                             Rendered manuscript (tracked in git)
   cue-actions.{html,pdf,docx}        Standard rendered outputs
+  cue-actions-supplemental.{html,pdf,docx}  Supplemental materials outputs
   nowlinAPSA2026.pdf                 PDF copy circulated for APSA 2026
 custom-reference-doc.docx            Word reference template used for the DOCX output
 LOG.md                               Running session log (newest entry first)
 scripts/
   analysis.R                         Sourced by the qmd: loads data and prepares the
                                        analysis objects, tables, and figures
+  supplemental-analysis.R            Sourced by the supplemental qmd (after analysis.R):
+                                       robustness-check objects (unweighted, controls,
+                                       balance, sample comparison)
   export-cited-refs.R                Pre-render step: trims the master .bib to cited keys
 presentation/                        APSA 2026 slide deck (Quarto reveal.js)
   NowlinAPSA26.qmd                   Slide source; sources scripts/analysis.R
@@ -33,10 +39,12 @@ literature/                          Background literature (NOT in git -- local 
 
 Requires R with: `survey`, `dplyr`, `broom`, `modelsummary`, `tinytable`, `marginaleffects`, `ggplot2`.
 
-- **Manuscript:** `quarto render` → outputs to `_output/` (HTML, PDF, and DOCX;
-  the DOCX uses `custom-reference-doc.docx`)
-- **Models only:** `Rscript scripts/analysis.R` builds the analysis
-  objects without rendering the manuscript.
+- **Manuscript and supplemental materials:** `quarto render` → outputs to
+  `_output/` (HTML, PDF, and DOCX for both `cue-actions.qmd` and
+  `cue-actions-supplemental.qmd`; the DOCX uses `custom-reference-doc.docx`)
+- **Models only:** `Rscript scripts/analysis.R` builds the manuscript's
+  analysis objects without rendering. For the supplemental-materials
+  robustness-check objects, also run `Rscript -e 'source("scripts/analysis.R"); source("scripts/supplemental-analysis.R")'`.
 
 ## Data
 
@@ -59,9 +67,10 @@ The `data/` folder is **not tracked in git**. Restore it before rendering:
   they are git-ignored.
 - `_output/` **is tracked in git** (unlike most build artifacts) so the
   rendered manuscript is available without re-running R/Quarto. Re-render
-  (`quarto render`) after any change to `cue-actions.qmd` or
-  `scripts/analysis.R` and commit the updated files in `_output/`
-  alongside the source change.
+  (`quarto render`) after any change to `cue-actions.qmd`,
+  `cue-actions-supplemental.qmd`, `scripts/analysis.R`, or
+  `scripts/supplemental-analysis.R`, and commit the updated files in
+  `_output/` alongside the source change.
 - Quarto's freeze cache (`_freeze/`) is enabled (`execute: freeze: auto` in
   `_quarto.yaml`), so code chunks are only re-executed when the qmd or its
   upstream R sources change.

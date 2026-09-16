@@ -1,0 +1,88 @@
+---
+title: "Supplemental Materials: Partisan vs Climate Cues and Public Opinion about Trump's Actions on Energy"
+fig-cap-location: top
+fontfamily: ebgaramond
+link-bibliography: false
+format:
+  html:
+    author:
+      - name: Matthew C. Nowlin
+        email: matthew.nowlin@uta.edu
+        corresponding: true
+        affiliations:
+          - name: University of Texas at Arlington
+            department: Department of Political Science
+  pdf:
+    author:
+      - name: "Matthew C. Nowlin^[Associate Professor, Department of Political Science, University of Texas at Arlington. Email: matthew.nowlin@uta.edu]"
+    include-in-header:
+      text: |
+        \usepackage{setspace}
+        \usepackage{dcolumn}
+        \usepackage{float}
+        \usepackage{amsmath}
+        \addtokomafont{disposition}{\rmfamily}
+        \normalem
+  docx:
+    author:
+      - name: "Matthew C. Nowlin^[Associate Professor, Department of Political Science, University of Texas at Arlington. Email: matthew.nowlin@uta.edu]"
+    reference-doc: custom-reference-doc.docx
+---
+
+```{r}
+#| include: false
+source("scripts/analysis.R")
+source("scripts/supplemental-analysis.R")
+```
+
+# Methods and Robustness Checks
+
+## Survey Sample
+
+Despite the use of Census-informed quotas, the sample recruited from Cloud Research was not perfectly representative of the US population. To address this, I used the `survey` and `anesrake` packages in `R` to perform iterative raking to compute survey weights that align the sample with the US Census's 2023 American Community Survey (ACS) on key demographic variables, including age, race, gender, and education. Additionally, I used the Pew Research Center's National Public Opinion Reference Survey (NPORS) from 2025 to align the sample on political party affiliation. @tbl-sample-comparison compares the unweighted and weighted sample on the demographic and party variables used as raking targets.
+
+```{r}
+#| label: tbl-sample-comparison
+#| tbl-cap: "Unweighted vs. Weighted Means on Demographic and Party Variables"
+sample_comparison_table
+```
+
+## Robustness: Results Without Survey Weights
+
+The analysis presented in the manuscript used the survey weights. To confirm that the main results are not a product of the weights, I re-estimate the preregistered H1-H4 specification with unweighted OLS, using the same model as in the manuscript's main results table. @tbl-results-unweighted reports the results. The estimates are substantively unchanged from the weighted analysis, indicating that the cue and interaction effects are not simply an artifact of the weights.
+
+```{r}
+#| label: tbl-results-unweighted
+#| tbl-cap: "Weighted OLS Models of Support for Trump's Energy Actions (Unweighted)"
+results_table_unweighted
+```
+
+## Covariate Balance Across Conditions
+
+Respondents were randomly assigned to the Trump, climate, or control conditions. @tbl-balance compares demographic covariates and the political-belief moderators across the three conditions to confirm that random assignment produced comparable groups.
+
+```{r}
+#| label: tbl-balance
+#| tbl-cap: "Covariate Balance Across Experimental Conditions"
+balance_table
+```
+
+## Robustness: Controlling for Demographic Covariates
+
+The models reported in the manuscript do not include demographic controls. To confirm that the cue and interaction effects are not driven by any residual demographic imbalance across conditions, I re-estimate the preregistered H1-H4 specification with age, sex (male), race (white), and income added as additive controls. @tbl-results-controls reports the results, with control coefficients omitted from display. Most cue and interaction effects are substantively unchanged from the manuscript's main models; the one exception is the Trump cue x conservative Republican interaction for cancelling the offshore wind project, which is marginally significant without controls (*p* = .095) but falls just short of the *p* < .10 threshold with controls added (*p* = .117).
+
+```{r}
+#| label: tbl-results-controls
+#| tbl-cap: "Weighted OLS Models of Support for Trump's Energy Actions (With Demographic Controls)"
+results_table_controls
+```
+
+## Exploratory Model: Climate Cue x Education
+
+As noted in the manuscript, H3 and H4 hypothesized that education would moderate the Trump cue's effect on conservative Republicans and liberal Democrats. @tbl-results-explore reports an exploratory (not preregistered) model that adds the parallel climate-cue x college interactions to check whether education also moderates the climate cue's effect. As with the Trump cue, there were no significant differences.
+
+```{r}
+#| label: tbl-results-explore
+#| tbl-cap: "Exploratory Model: Climate Cue x Education (Not Preregistered)"
+results_table_explore
+```

@@ -14,7 +14,9 @@ second term.
 
 **Key files:**
 - `cue-actions.qmd` — main manuscript (renders to HTML, PDF, DOCX)
+- `cue-actions-supplemental.qmd` — supplemental materials (renders to HTML, PDF, DOCX): robustness checks and the exploratory climate x education model
 - `scripts/analysis.R` — survey design, five `svyglm` models (H1-H4), regression table, and predicted-value figures sourced by the manuscript
+- `scripts/supplemental-analysis.R` — robustness-check objects (unweighted, controls, balance, sample comparison) sourced by the supplemental doc
 - `scripts/export-cited-refs.R` — pre-render step that trims the master `.bib` to cited keys
 - `data/cueActionsDataWeighted.csv` — weighted survey data (N = 3,113)
 - `README.md` — project structure and reproduction instructions
@@ -22,6 +24,48 @@ second term.
 ---
 
 ## Session History
+
+### Session 11 — 2026-09-16 (Add supplemental materials, VIF footnote, controls-robustness caveat)
+
+- User asked whether including all interactions (up to 3-way) in the same
+  `svyglm` specification was collinearity. Checked VIFs (`car::vif`) and
+  3-way interaction cell sizes: VIFs of 5-20 on interaction terms are
+  mechanical (expected when a hierarchical model includes a 3-way
+  interaction correlated with its component lower-order terms), not a design
+  flaw, since `trump.cue`/`climate.cue` are randomized and orthogonal to the
+  observational moderators. All 3-way cells have n > 100. Added a footnote
+  documenting this check at `cue-actions.qmd:134`.
+- Created `cue-actions-supplemental.qmd` (renders to HTML/PDF/DOCX,
+  added to `_quarto.yaml` render list) and `scripts/supplemental-analysis.R`,
+  modeled on `Under Review/cue-energy/cue-energy-supplemental.qmd` adapted to
+  this project's data/variables and table style (`tinytable`/`modelsummary`,
+  not `flextable`). Sections: unweighted-vs-weighted sample comparison,
+  unweighted-OLS robustness check, covariate balance across the three
+  conditions, a demographic-controls (age/male/white/inc) robustness check,
+  and the exploratory climate-cue x education model (`tbl-results-explore`,
+  moved here from the manuscript).
+- Removed the `# Appendix` section from `cue-actions.qmd` (was just
+  `tbl-results-explore`); the footnote that pointed to it now reads "shown
+  in the Supplemental Materials" instead of a cross-document `@ref`, which
+  doesn't resolve across separate rendered documents in a `type: default`
+  Quarto project.
+- Checked whether the demographic-controls robustness check actually left
+  the H1-H4 results unchanged (initial supplemental-doc text claimed this
+  without verifying). It does not fully hold: the Trump cue x conservative
+  Republican interaction for cancelling the offshore wind project is
+  marginally significant without controls (*p* = .095) but not with controls
+  added (*p* = .117); all other H1-H4 terms are robust. Corrected the
+  supplemental-materials text to note this exception, and added a footnote
+  in the Discussion (`cue-actions.qmd:175`) flagging it and pointing to the
+  Supplemental Materials.
+- Found and corrected a stale note in this file's own "Key Analytical
+  Decisions" section (below): it claimed age/male/white/inc were "included
+  additively in every model," but the current `scripts/analysis.R` main
+  specification does not include them. Updated that bullet to reflect actual
+  current state and note that those controls now exist only in the new
+  supplemental-materials robustness check.
+- Re-rendered HTML/PDF/DOCX for both `cue-actions.qmd` and
+  `cue-actions-supplemental.qmd`; `_freeze/` cache updated accordingly.
 
 ### Session 10 — 2026-09-15 (Rename manuscript-prep.R to analysis.R)
 
@@ -407,9 +451,15 @@ All analysis lives in `scripts/manuscript-prep.R`, sourced at the top of
 - **Reference categories**: control condition (vs. Trump cue / climate cue),
   moderate/other identity (vs. conRep / libDem), and no college degree are
   the excluded referents throughout.
-- **Controls**: age, male, white, inc, included additively in every model.
-  `trump.approval` was tried and then dropped per user request (collinear
-  with partisanship; dropping it didn't change the substantive conclusions).
+- **Controls**: the preregistered H1-H4 specification in `scripts/analysis.R`
+  does *not* include demographic controls (this bullet originally said
+  age/male/white/inc were included additively in every model; that stopped
+  being true at some point before Session 11 and this note was stale until
+  corrected then). `trump.approval` was tried and then dropped per user
+  request (collinear with partisanship; dropping it didn't change the
+  substantive conclusions). Age/male/white/inc are added as controls only in
+  the Session 11 supplemental-materials robustness check
+  (`scripts/supplemental-analysis.R`), not in the main model.
 - **Table readability across HTML/PDF/DOCX**: demographic controls are
   estimated but not printed in `tbl-results` (footnoted instead) to keep the
   table a manageable width; `tinytable::style_tt(fontsize = 0.7)` handles the
