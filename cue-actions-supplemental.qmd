@@ -86,3 +86,5 @@ As noted in the manuscript, H3 and H4 hypothesized that education would moderate
 #| tbl-cap: "Exploratory Model: Climate Cue x Education (Not Preregistered)"
 results_table_explore
 ```
+
+Note: the Trump-approval corroborating analysis (a continuous, post-treatment measure of Trump approval substituted for the ideology x party identity measures) is reported in the manuscript's Results section rather than here, since it bears directly on the main text's interpretation of the Trump-cue mechanism.

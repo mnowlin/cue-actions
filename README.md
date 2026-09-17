@@ -33,6 +33,10 @@ presentation/                        APSA 2026 slide deck (Quarto reveal.js)
 data/                                Survey/analysis data (NOT in git -- see below)
   cueActionsDataWeighted.csv         Survey data with post-stratification weights
 literature/                          Background literature (NOT in git -- local only)
+submission-files/                    Journal submission packet (NOT in git -- local only):
+                                       title page, author-stripped manuscript/supplemental
+                                       DOCX, cover letter, competing-interests statement,
+                                       abstract, AI-use disclosure, and peer-review notes
 ```
 
 ## Reproducing the analysis

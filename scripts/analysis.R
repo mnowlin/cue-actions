@@ -179,6 +179,19 @@ means_table <- lapply(dvs, means_row) |>
   )) |>
   style_tt(fontsize = 0.7)
 
+# --- 3c. Liberal Democrats' control-condition means (floor-effect check) ---
+# Survey-weighted mean support among liberal Democrats in the control
+# condition only, for the in-text floor-effect discussion of why the Trump
+# and climate cues moved Democrats' opinions so little.
+
+wtd_mean_sub <- function(x, w) sum(x * w) / sum(w)
+
+libdem_control <- d[d$libDem == 1 & d$control == 1, ]
+libdem_control_means <- sapply(dvs, function(dv) {
+  round(wtd_mean_sub(libdem_control[[dv]], libdem_control$weight), 2)
+})
+names(libdem_control_means) <- dv_labels[dvs]
+
 # --- 4. Helper for in-text/bullet interpretation of hypothesis terms --------
 
 get_term <- function(model, term) {
@@ -279,6 +292,76 @@ fig_college <- ggplot(pred_college, aes(x = college_label, y = estimate, color =
   theme_bw() +
   theme(axis.text.x = element_text(angle = 40, hjust = 1), legend.position = "bottom")
 
+# --- 6a. Hypothesis test summary (H1/H2 scorecard) --------------------------
+# H1 and H2 are preregistered as directional (one-tailed) compound hypotheses
+# ("Trump OR climate cue"), and the preregistration did not specify a
+# significance threshold. Rather than reducing each compound hypothesis to a
+# single supported/not-supported verdict, this table reports the one-tailed
+# test (the statistically appropriate test for a directional hypothesis) for
+# each cue x identity interaction term, separately for each of the five
+# actions, so the cue- and action-specific pattern underlying the H1/H2
+# conclusions in the text is fully transparent.
+#
+#   trump.cue:conRep, climate.cue:conRep -> H1 (expected sign: positive)
+#   trump.cue:libDem, climate.cue:libDem -> H2 (expected sign: negative)
+#
+# One-tailed p = two-tailed p / 2 when the estimated sign matches the
+# hypothesized direction, and 1 - two-tailed p / 2 otherwise (i.e., evidence
+# against the hypothesized direction can never register as one-tailed
+# "significant," but a two-tailed-significant effect in the *opposite* of
+# the hypothesized direction is flagged separately below).
+
+scorecard_terms <- c(
+  "trump.cue:conRep"   = 1,
+  "climate.cue:conRep" = 1,
+  "trump.cue:libDem"   = -1,
+  "climate.cue:libDem" = -1
+)
+
+scorecard_cell <- function(dv_label, term, expected_sign) {
+  m    <- models[[dv_label]]
+  s    <- summary(m)$coefficients
+  est  <- s[term, "Estimate"]
+  p2   <- s[term, grep("^Pr", colnames(s))]
+  matches_direction <- sign(est) == expected_sign
+  p1   <- if (matches_direction) p2 / 2 else 1 - p2 / 2
+  mark <- if (matches_direction && p1 < .05) {
+    "*"
+  } else if (matches_direction && p1 < .10) {
+    "†"
+  } else if (!matches_direction && p2 < .05) {
+    "‡"  # significant, opposite of the hypothesized direction
+  } else {
+    ""
+  }
+  sprintf("%+.2f%s", est, mark)
+}
+
+hyp_scorecard_table <- data.frame(Action = unname(dv_labels[dvs]), check.names = FALSE)
+scorecard_col_labels <- c(
+  "trump.cue:conRep"   = "H1: Trump x ConRep",
+  "climate.cue:conRep" = "H1: Climate x ConRep",
+  "trump.cue:libDem"   = "H2: Trump x LibDem",
+  "climate.cue:libDem" = "H2: Climate x LibDem"
+)
+for (term in names(scorecard_terms)) {
+  hyp_scorecard_table[[scorecard_col_labels[[term]]]] <- sapply(
+    dv_labels[dvs], scorecard_cell, term = term, expected_sign = scorecard_terms[[term]]
+  )
+}
+
+hyp_scorecard_table <- hyp_scorecard_table |>
+  tt(notes = paste(
+    "Cell entries are the cue x identity interaction coefficient from the model",
+    "for that action (@tbl-results), with one-tailed significance given the",
+    "preregistered directional hypotheses (which specified no significance",
+    "threshold): * one-tailed p<.05; † one-tailed p<.10; ‡ two-tailed",
+    "p<.05 in the direction opposite the one hypothesized. H1 expects positive",
+    "coefficients (more support); H2 expects negative coefficients (less",
+    "support)."
+  )) |>
+  style_tt(fontsize = 0.7)
+
 # --- 6. Exploratory model: climate cue x education --------------------------
 # Not preregistered. H3/H4 only hypothesized that education would moderate
 # the Trump cue's effect; this adds the parallel climate.cue:college terms
@@ -310,3 +393,104 @@ results_table_explore <- modelsummary(
   notes = "Survey-weighted OLS (svyglm). Exploratory model adding climate.cue:college and its interactions with conRep/libDem to the preregistered H1-H4 specification; not used for the preregistered hypothesis tests."
 ) |>
   style_tt(fontsize = 0.7)
+
+# --- 7. Corroborating analysis: Trump approval as a continuous moderator ----
+# trump.approval (1-5) was measured after respondents saw their assigned cue,
+# so it cannot be added as a covariate or moderator in the preregistered
+# causal model (H1-H4) without risking post-treatment bias: because it is
+# downstream of the manipulation, conditioning on it can distort the very
+# cue effects it would be added to help interpret. It is also highly
+# correlated with the conRep/libDem measures used in the main models
+# (r = .65 / -.57), so including it alongside them would not isolate an
+# independent effect in any case. This is not a preregistered hypothesis;
+# it is reported as a corroborating analysis on the mechanism behind the
+# preregistered Trump-cue findings above -- whether the same pattern holds
+# under an alternative operationalization of pro-Trump orientation, not a
+# robustness check of the H1-H4 estimates themselves to a specification
+# choice.
+
+# 7a. Does cue assignment predict stated Trump approval? A significant
+# coefficient would indicate the cue itself shifted stated approval, which
+# would complicate its use as a moderator below.
+trump_approval_balance <- svyglm(trump.approval ~ trump.cue + climate.cue, design = design)
+
+trump_approval_balance_table <- tidy(trump_approval_balance) |>
+  mutate(across(where(is.numeric), ~ round(.x, 3))) |>
+  tt(notes = paste(
+    "Survey-weighted OLS of Trump approval (1-5) on cue condition (control",
+    "condition omitted). Neither coefficient approaches significance."
+  )) |>
+  style_tt(fontsize = 0.7)
+
+# 7b. Model: cues x continuous Trump approval, replacing conRep/libDem. Not
+# preregistered and not causal, since approval is measured post-treatment;
+# reported as a corroborating analysis on whether a more direct measure of
+# pro-Trump orientation shows a pattern consistent with the conRep-based
+# results above.
+fit_model_approval <- function(dv) {
+  f <- as.formula(paste(
+    dv,
+    "~ trump.cue + climate.cue + trump.approval",
+    "+ trump.cue:trump.approval + climate.cue:trump.approval"
+  ))
+  svyglm(f, design = design)
+}
+
+models_approval <- lapply(dvs, fit_model_approval)
+names(models_approval) <- dv_labels[dvs]
+
+coef_map_approval <- c(
+  "trump.cue"                 = "Trump Cue",
+  "climate.cue"                = "Climate Cue",
+  "trump.approval"              = "Trump Approval",
+  "trump.cue:trump.approval"    = "Trump Cue x Approval",
+  "climate.cue:trump.approval"  = "Climate Cue x Approval",
+  "(Intercept)"                 = "Intercept"
+)
+
+results_table_approval <- modelsummary(
+  models_approval,
+  coef_map = coef_map_approval,
+  gof_omit = gof_omit_pattern,
+  stars = stars_map,
+  notes = paste(
+    "Survey-weighted OLS (svyglm). Not preregistered: replaces the ideology x",
+    "party identity measures (conRep/libDem) with continuous Trump approval",
+    "(1-5), measured after the cue manipulation. Because approval is",
+    "post-treatment, these estimates are descriptive only and should not be",
+    "given a causal interpretation."
+  )
+) |>
+  style_tt(fontsize = 0.7)
+
+# 7c. Figure: predicted support by Trump approval and cue condition, for
+# each action. Uses the models_approval fits above.
+grid_approval <- expand.grid(
+  trump.approval = seq(1, 5, by = 0.1),
+  cue_label      = c("Control", "Trump Cue", "Climate Cue"),
+  stringsAsFactors = FALSE
+) %>%
+  mutate(
+    trump.cue   = as.numeric(cue_label == "Trump Cue"),
+    climate.cue = as.numeric(cue_label == "Climate Cue")
+  )
+
+predict_grid_approval <- function(grid) {
+  out <- lapply(names(models_approval), function(dv_label) {
+    p <- as.data.frame(predictions(models_approval[[dv_label]], newdata = grid))
+    p$dv <- dv_label
+    p
+  })
+  bind_rows(out) %>% mutate(dv = factor(dv, levels = dv_labels))
+}
+
+pred_approval <- predict_grid_approval(grid_approval) %>%
+  mutate(cue_label = factor(cue_label, levels = c("Control", "Trump Cue", "Climate Cue")))
+
+fig_approval <- ggplot(pred_approval, aes(x = trump.approval, y = estimate, color = cue_label, fill = cue_label)) +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = 0.15, color = NA) +
+  geom_line(linewidth = 1) +
+  facet_wrap(~dv, nrow = 1) +
+  labs(x = "Trump Approval (1-5)", y = "Predicted Support (1-5)", color = "Condition", fill = "Condition") +
+  theme_bw() +
+  theme(legend.position = "bottom")

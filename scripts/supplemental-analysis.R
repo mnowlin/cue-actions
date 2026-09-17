@@ -139,3 +139,9 @@ results_table_controls <- modelsummary(
   notes = "Survey-weighted OLS (svyglm), adding age, male, white, and income as additive controls to the specification in the manuscript's main results table. Control coefficients omitted from display; reference categories as in the manuscript's main results table."
 ) |>
   style_tt(fontsize = 0.7)
+
+# Note: the Trump-approval corroborating analysis (cue x continuous Trump
+# approval) moved to the main manuscript; see scripts/analysis.R section 7
+# and cue-actions.qmd. `models_approval` and `fig_approval` are built there
+# and are available here too since cue-actions-supplemental.qmd sources
+# analysis.R before this file.

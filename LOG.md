@@ -25,6 +25,81 @@ second term.
 
 ## Session History
 
+### Session 12 — 2026-09-17 (Peer review, must-fix/should-fix revisions, Trump-approval corroborating analysis, proofreading, ERSS submission materials)
+
+- Ran a simulated five-reviewer peer review (EIC + 3 peer reviewers + Devil's
+  Advocate, via the `academic-paper-reviewer` skill) of `cue-actions.qmd`.
+  Decision: Major Revision. Saved the full report to
+  `submission-files/peer-review-2026-09-17.md` (git-ignored). Identified 5
+  must-fix and 5 should-fix items; all 10 were implemented this session.
+- **Must-fix items**: reframed the abstract/Intro/Discussion around
+  one-tailed significance testing — the four hypotheses are directional and
+  the preregistration specified no significance threshold in advance (user
+  confirmed), so the paper now reports one-tailed *p* < .05/.10 throughout
+  and flags it explicitly. Added `hyp_scorecard_table` (`scripts/analysis.R`
+  section 6a) and `@tbl-hyp-scorecard`: a term-by-term one-tailed test of
+  each cue x political-belief interaction, action by action, so H1/H2 are
+  evaluated transparently rather than as a single supported/not-supported
+  verdict. Under the corrected one-tailed framing, the Trump cue is
+  significant for **4 of 5** actions among conservative Republicans (not 2
+  clean + 2 marginal, as the original two-tailed framing implied) — a
+  materially stronger, not weaker, result. Specified the exact
+  ideology x party-ID cutoffs for `conRep`/`libDem` (Republican/Democrat +
+  slightly/somewhat/very conservative/liberal) in Data and Measures. Added
+  and then (per user request) softened the manipulation-check limitation,
+  noting the cue attribution is embedded and repeated across all five
+  outcome items rather than shown once in a separate vignette.
+- **Should-fix items**: substantiated the libDem floor-effect claim with
+  actual weighted control-condition means (`libdem_control_means`,
+  `scripts/analysis.R`); tightened the novelty claim in the Discussion to
+  avoid overclaiming a general source-cue-beats-content-cue theory; added an
+  explicit non-probability-sample caveat tied to the paper's strongest
+  claims; gave the tax-credit/climate-cue reversal more prominence
+  throughout as a genuine complication of the headline finding, not a
+  footnote.
+- **Trump-approval corroborating analysis**: discussed post-treatment bias
+  at length with the user, who was skeptical it applied given how stable
+  Trump approval is. The cue-assignment balance check (`trump.cue`/
+  `climate.cue` predicting `trump.approval`) found no significant shift,
+  consistent with that skepticism. Moved this analysis out of the
+  supplemental materials and into the main manuscript per user request, as
+  a new `## Corroborating Analysis: Trump Approval` subsection (not a
+  "robustness check" — the user asked for that specific term, since it
+  swaps the moderator construct rather than holding the estimand fixed and
+  varying a nuisance specification choice). Built `fig-approval`
+  (`scripts/analysis.R` section 7): predicted support by continuous Trump
+  approval x cue condition, faceted by action. The Trump cue's slope is
+  visibly steeper than control/climate for all five actions, reinforcing
+  the conRep-based results with an independent, more direct measure of
+  pro-Trump orientation.
+- Full proofreading pass on `cue-actions.qmd` at user request (typos,
+  spelling, grammar, hyphenation, p-value leading-zero consistency): fixed
+  "Tx credits" → "Tax credits," "particular potent" → "particularly
+  potent," a missing article, two garbled/ungrammatical sentences, a
+  data-is-plural agreement fix, and standardized "college-educated"
+  hyphenation and *p* < .10 formatting throughout.
+- Trimmed the abstract to ERSS's 250-word limit (426 → 238 words), then the
+  user trimmed it further by hand.
+- Checked `paperpush --venues`: it does not support *Energy Research &
+  Social Science* (its venue list is bio/physics journals only — Nature,
+  Cell, Science, Bioinformatics, etc., plus arXiv/bioRxiv/medRxiv). Prepared
+  the submission manually instead. Created `submission-files/` (git-ignored,
+  added to `.gitignore`) containing: `title-page.md`/`.docx`; `manuscript.docx`
+  and `supplemental-materials.docx` (both rendered from the qmd sources with
+  the docx author block stripped, verified no author-identifying text
+  leaked in); `cover-letter.md`/`.docx` (addresses ERSS's stated preference
+  against single-country/single-method submissions head-on rather than
+  ignoring it); `competing-interests.md`/`.docx`; `abstract.md`/`.docx`;
+  `ai-use-statement.md`/`.docx` (Elsevier-style generative-AI disclosure,
+  scoped to cover both manuscript-text and R-code assistance from Claude
+  Code, not just grammar-checking); and a keyword list (partisan cues;
+  political polarization; energy policy; climate change communication;
+  public opinion; survey experiment). All `.docx` files use
+  `custom-reference-doc.docx`.
+- Re-rendered HTML for both `cue-actions.qmd` and
+  `cue-actions-supplemental.qmd` after each substantive edit; `_freeze/`
+  cache updated accordingly.
+
 ### Session 11 — 2026-09-16 (Add supplemental materials, VIF footnote, controls-robustness caveat)
 
 - User asked whether including all interactions (up to 3-way) in the same
@@ -423,26 +498,44 @@ second term.
 
 ## Analysis Architecture
 
-All analysis lives in `scripts/manuscript-prep.R`, sourced at the top of
-`cue-actions.qmd`:
+All analysis lives in `scripts/analysis.R` (renamed from `manuscript-prep.R`
+in Session 10), sourced at the top of `cue-actions.qmd`:
 
 - Survey design: `svydesign(ids = ~1, weights = ~weight)`, simple weighted
   design (no clustering/strata).
 - Five `svyglm` models (one per DV), same RHS: cue main effects, identity
   main effects, college main effect, cue x identity interactions, cue x
   college and college x identity interactions, and the cue x identity x
-  college three-way interactions that test H3/H4, plus controls (age, male,
-  white, inc).
+  college three-way interactions that test H3/H4. No demographic controls in
+  the main specification (see Key Analytical Decisions).
 - `results_table`: `modelsummary()` (backend: `tinytable`) with a `coef_map`
-  restricted to the cue/identity/college terms (controls omitted from the
-  printed table, noted in a footnote), `stars_map` including `†` for
-  *p* < .10, styled via `tinytable::style_tt(fontsize = 0.7)`.
+  restricted to the cue/identity/college terms, `stars_map` including `†` for
+  *p* < .10 (two-tailed, as reported in this table), styled via
+  `tinytable::style_tt(fontsize = 0.7)`.
 - `get_term()` / `hyp_terms` / `hyp_results`: helpers for pulling a specific
   hypothesis-relevant coefficient out of a model's tidy output.
 - `predict_grid()`: builds a prediction grid (cue/identity/college combos,
   other controls at survey-weighted means) and calls
   `marginaleffects::predictions()` per model; feeds `fig_identity` and
   `fig_college`.
+- `libdem_control_means` (added Session 12): weighted mean support among
+  liberal Democrats in the control condition only, per action — substantiates
+  the floor-effect claim in the Discussion.
+- `hyp_scorecard_table` (added Session 12, section 6a): one-tailed test of
+  each `trump.cue`/`climate.cue` x `conRep`/`libDem` interaction, action by
+  action. One-tailed *p* = two-tailed *p* / 2 when the sign matches the
+  hypothesized direction, else `1 - two-tailed p / 2`; flags a significant
+  effect in the *opposite* of the hypothesized direction separately (`‡`).
+  Feeds `@tbl-hyp-scorecard`.
+- Section 7 (added Session 12) — Trump-approval corroborating analysis:
+  `trump_approval_balance`/`trump_approval_balance_table` (does cue
+  assignment predict stated approval? no), `models_approval` (cues x
+  continuous `trump.approval`, replacing conRep/libDem; not preregistered,
+  not causal since approval is post-treatment), `results_table_approval`,
+  and `fig_approval` (predicted support by approval x condition, faceted by
+  action, via `marginaleffects::predictions()` over a
+  `seq(1, 5, by = 0.1)` approval grid). Used in the main manuscript, not the
+  supplemental materials.
 
 ## Key Analytical Decisions
 
@@ -452,46 +545,59 @@ All analysis lives in `scripts/manuscript-prep.R`, sourced at the top of
   moderate/other identity (vs. conRep / libDem), and no college degree are
   the excluded referents throughout.
 - **Controls**: the preregistered H1-H4 specification in `scripts/analysis.R`
-  does *not* include demographic controls (this bullet originally said
-  age/male/white/inc were included additively in every model; that stopped
-  being true at some point before Session 11 and this note was stale until
-  corrected then). `trump.approval` was tried and then dropped per user
-  request (collinear with partisanship; dropping it didn't change the
-  substantive conclusions). Age/male/white/inc are added as controls only in
-  the Session 11 supplemental-materials robustness check
+  does *not* include demographic controls. Age/male/white/inc are added as
+  controls only in the Session 11 supplemental-materials robustness check
   (`scripts/supplemental-analysis.R`), not in the main model.
+- **`trump.approval`**: not included as a covariate or moderator in the
+  preregistered H1-H4 models, because it was measured after respondents saw
+  their assigned cue (post-treatment bias risk) and is highly correlated
+  with `conRep`/`libDem` (*r* = .65 / -.57). As of Session 12 it is used
+  instead as a separate, explicitly non-causal "corroborating analysis" in
+  the main manuscript (`scripts/analysis.R` section 7) — this supersedes an
+  earlier, now-stale note in this file that said it was "tried and dropped."
 - **Table readability across HTML/PDF/DOCX**: demographic controls are
   estimated but not printed in `tbl-results` (footnoted instead) to keep the
   table a manageable width; `tinytable::style_tt(fontsize = 0.7)` handles the
   rest.
-- **Significance reporting**: `†`/`*`/`**`/`***` for *p* < .10/.05/.01/.001,
-  per user request.
+- **Significance reporting**: `tbl-results`/`tbl-means` report conventional
+  two-tailed tests (`†`/`*`/`**`/`***` for *p* < .10/.05/.01/.001). As of
+  Session 12, the H1/H2 hypothesis tests specifically (`@tbl-hyp-scorecard`
+  and the corresponding Discussion prose) instead use **one-tailed** tests,
+  since H1-H4 are directional and the preregistration specified no
+  significance threshold in advance; this is noted explicitly in the
+  manuscript wherever it applies. Two-tailed and one-tailed reporting
+  therefore coexist in the paper by design — check which a given number
+  refers to before reusing it.
 
-## Key Findings (as of Session 2, 2026-07-21)
+## Key Findings (as of Session 12, 2026-09-17)
 
-- **H1** (conRep more supportive under either cue) — partially supported.
-  The Trump cue significantly increased conservative Republican support for
-  coal leasing (*b* = 0.45, *p* = .028) and nuclear licensing (*b* = 0.49,
-  *p* = .030), marginally for keeping coal plants open (*b* = 0.33,
-  *p* = .091), and was positive but not significant for the remaining two
-  actions. The climate cue never significantly increased conRep support, and
-  significantly *reduced* it for renewable tax credits (*b* = -0.45,
-  *p* = .008).
-- **H2** (libDem less supportive under either cue) — not supported at
-  conventional significance. Both cues moved libDem support in the
-  hypothesized negative direction for four of five actions, but no
-  coefficient reached *p* < .05; the climate cue's effect on tax-credit
-  support was marginal (*b* = -0.25, *p* = .066).
-- **H3** (Trump-cue effect on conRep concentrated among non-college
-  respondents) — not supported. The three-way term was negative in all five
-  models (directionally consistent with H3) but never significant.
-- **H4** (Trump-cue effect on libDem concentrated among non-college
-  respondents) — not supported. The three-way term was small and
-  inconsistent in sign across models.
-- Overall: the Trump cue (not the climate cue) is the more reliable driver of
-  conservative Republican support, concentrated in 2-3 of the 5 actions
-  (coal leasing, nuclear licensing, and marginally coal-plant retention).
-  There's no reliable evidence of cue-driven suppression among liberal
-  Democrats, or that education moderates the Trump cue's effect on either
-  group. These conclusions are robust to dropping the Trump-approval
-  control.
+Note: these use one-tailed tests for the H1/H2 interaction terms (see Key
+Analytical Decisions); earlier versions of this section reported two-tailed
+values only, which understated the Trump-cue results below.
+
+- **H1** (conRep more supportive under either cue) — the Trump-cue component
+  is well supported: significant (one-tailed *p* < .05) for 4 of 5 actions
+  (coal leasing, coal-plant retention, cancelling the offshore wind project,
+  nuclear licensing), and marginal (one-tailed *p* = .063) for the fifth
+  (tax credits). The climate-cue component is not supported: no significant
+  increase for conRep on any action, and one significant *decrease*
+  (tax credits, two-tailed *p* = .008) — opposite the direction H1
+  predicted.
+- **H2** (libDem less supportive under either cue) — little support. The
+  Trump cue had no significant effect on libDem for any action (all five
+  coefficients negative, as hypothesized, but none close to significant).
+  The climate cue significantly reduced libDem support only for tax credits
+  (one-tailed *p* = .040).
+- **H3/H4** (Trump-cue effect concentrated among non-college respondents) —
+  not supported for either conRep or libDem; the three-way interaction was
+  never significant.
+- **Corroborating analysis (Session 12)**: substituting continuous, post-treatment
+  Trump approval for conRep/libDem, the Trump cue's effect is significantly
+  larger among higher-approval respondents for all five actions — an
+  independent measure pointing to the same mechanism.
+- Overall: a cue naming Trump, not a cue naming climate change, is the more
+  consistent driver of polarized support among conservative Republicans
+  (4-5 of 5 actions), with the tax-credit action as the one clear exception,
+  where the climate cue dominates instead. No reliable evidence of cue-driven
+  suppression among liberal Democrats beyond the tax-credit action, or that
+  education moderates either cue's effect for either group.
