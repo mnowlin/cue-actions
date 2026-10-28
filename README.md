@@ -1,5 +1,7 @@
 # Partisan vs Climate Cues and Public Opinion about Trump's Actions on Energy
 
+**Status**: Under peer review.
+
 Manuscript and reproducible analysis examining how partisan (Trump) and
 climate change cues shape US public opinion about President Trump's actions
 on energy during his second term.
